@@ -1,0 +1,49 @@
+{
+  "ProjetoHomologacao": {
+    "IP": "D:\\Arquivos\\Imagens\\Projeto",
+    "DNS": "D:\\Arquivos\\Imagens\\Projeto",
+    "SPLIT": "Imagens\\"
+  },
+  "ProjetoDesenvolvimento": {
+    "IP": "D:\\Arquivos\\Imagens\\Projeto",
+    "DNS": "D:\\Arquivos\\Imagens\\Projeto",
+    "SPLIT": "Imagens\\"
+  },
+  "ProjetoProcucao": {
+    "IP": "D:\\Arquivos\\Imagens\\Projeto",
+    "DNS": "D:\\Arquivos\\Imagens\\Projeto",
+    "SPLIT": "Imagens\\"
+  },
+
+  "MenuHomologacao": {
+    "IP": "D:\\Arquivos\\Imagens\\Menu",
+    "DNS": "D:\\Arquivos\\Imagens\\Menu",
+    "SPLIT": "Imagens\\"
+  },
+  "MenuDesenvolvimento": {
+    "IP": "D:\\Arquivos\\Imagens\\Menu",
+    "DNS": "D:\\Arquivos\\Imagens\\Menu",
+    "SPLIT": "Imagens\\"
+  },
+  "MenuProducao": {
+    "IP": "D:\\Arquivos\\Imagens\\Menu",
+    "DNS": "D:\\Arquivos\\Imagens\\Menu",
+    "SPLIT": "Imagens\\"
+  },
+
+  "AnotacaoHomologacao": {
+    "IP": "D:\\Arquivos\\Imagens\\Anotacao",
+    "DNS": "D:\\Arquivos\\Imagens\\Anotacao",
+    "SPLIT": "Imagens\\"
+  },
+  "AnotacaoDesenvolvimento": {
+    "IP": "D:\\Arquivos\\Imagens\\Anotacao",
+    "DNS": "D:\\Arquivos\\Imagens\\Anotacao",
+    "SPLIT": "Imagens\\"
+  },
+  "AnotacaoProducao": {
+    "IP": "D:\\Arquivos\\Imagens\\Anotacao",
+    "DNS": "D:\\Arquivos\\Imagens\\Anotacao",
+    "SPLIT": "Imagens\\"
+  }
+}
