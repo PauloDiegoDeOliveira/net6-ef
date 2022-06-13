@@ -37,7 +37,7 @@ namespace DevLabs.APIRest.Configuration
                                 Id = "Bearer"
                             }
                         },
-                        new string[] {}
+                        Array.Empty<string>()
                     }
                 });
 
@@ -113,7 +113,7 @@ namespace DevLabs.APIRest.Configuration
     {
         public void Apply(OpenApiOperation operation, OperationFilterContext context)
         {
-            if (operation.Parameters == null)
+            if (operation.Parameters is null)
             {
                 return;
             }
@@ -128,17 +128,17 @@ namespace DevLabs.APIRest.Configuration
 
                 operation.Deprecated = OpenApiOperation.DeprecatedDefault;
 
-                if (parameter.Description == null)
+                if (parameter.Description is null)
                 {
                     parameter.Description = description.ModelMetadata?.Description;
                 }
 
-                if (routeInfo == null)
+                if (routeInfo is null)
                 {
                     continue;
                 }
 
-                if (parameter.In != ParameterLocation.Path && parameter.Schema.Default == null)
+                if (parameter.In != ParameterLocation.Path && parameter.Schema.Default is null)
                 {
                     parameter.Schema.Default = new OpenApiString(routeInfo.DefaultValue?.ToString());
                 }

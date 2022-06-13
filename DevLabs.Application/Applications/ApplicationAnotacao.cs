@@ -3,7 +3,8 @@ using DevLabs.Application.Applications.Base;
 using DevLabs.Application.DTOs.Anotacao;
 using DevLabs.Application.DTOs.Pagination;
 using DevLabs.Application.Interfaces;
-using DevLabs.Application.Utilities;
+using DevLabs.Application.Utilities.Image;
+using DevLabs.Application.Utilities.Paths;
 using DevLabs.Domain.Core.Interfaces.Service;
 using DevLabs.Domain.Entitys;
 using DevLabs.Domain.Pagination;
@@ -34,12 +35,11 @@ namespace DevLabs.Application.Applications
         {
             Anotacao objeto = mapper.Map<Anotacao>(postAnotacaoDTO);
 
-            PathCreator pathCreator = new PathCreator();
-            objeto.PolulateInformations(objeto, await pathCreator.CreateIpPath(caminhoFisico),
-                                                await pathCreator.CreateAbsolutePath(caminhoAbsoluto),
-                                                await pathCreator.CreateRelativePath(await pathCreator.CreateAbsolutePath(caminhoAbsoluto), splitRelativo));
+            objeto.PolulateInformations(objeto, await PathCreator.CreateIpPath(caminhoFisico),
+                                                await PathCreator.CreateAbsolutePath(caminhoAbsoluto),
+                                                await PathCreator.CreateRelativePath(await PathCreator.CreateAbsolutePath(caminhoAbsoluto), splitRelativo));
 
-            UploadFormMethods<Anotacao> uploadClass = new UploadFormMethods<Anotacao>();
+            UploadFormMethods<Anotacao> uploadClass = new();
             await uploadClass.UploadImage(objeto);
 
             return mapper.Map<ViewAnotacaoDTO>(await serviceAnotacao.PostAsync(objeto));
@@ -55,13 +55,12 @@ namespace DevLabs.Application.Applications
 
             if (putAnotacaoDTO.ImagemUpload is not null)
             {
-                UploadFormMethods<Anotacao> uploadClass = new UploadFormMethods<Anotacao>();
+                UploadFormMethods<Anotacao> uploadClass = new();
                 await uploadClass.DeleteImage(consulta);
 
-                PathCreator pathCreator = new PathCreator();
-                objeto.PolulateInformations(objeto, await pathCreator.CreateIpPath(caminhoFisico),
-                                                    await pathCreator.CreateAbsolutePath(caminhoAbsoluto),
-                                                    await pathCreator.CreateRelativePath(await pathCreator.CreateAbsolutePath(caminhoAbsoluto), splitRelativo));
+                objeto.PolulateInformations(objeto, await PathCreator.CreateIpPath(caminhoFisico),
+                                                    await PathCreator.CreateAbsolutePath(caminhoAbsoluto),
+                                                    await PathCreator.CreateRelativePath(await PathCreator.CreateAbsolutePath(caminhoAbsoluto), splitRelativo));
 
                 await uploadClass.UploadImage(objeto);
             }
@@ -80,7 +79,7 @@ namespace DevLabs.Application.Applications
             if (consulta is null)
                 return null;
 
-            UploadFormMethods<Anotacao> uploadClass = new UploadFormMethods<Anotacao>();
+            UploadFormMethods<Anotacao> uploadClass = new();
             await uploadClass.DeleteImage(consulta);
             return await base.DeleteAsync(id);
         }

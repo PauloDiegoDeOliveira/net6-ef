@@ -23,6 +23,7 @@ namespace DevLabs.Infrastructure.Configurations.Base
 
             builder.Property(x => x.NomeArquivoBanco)
                    .HasColumnName("NomeArquivoBanco")
+                   .HasMaxLength(50)
                    .HasDefaultValueSql("NEWID()");
 
             builder.Property(p => p.TamanhoEmBytes)

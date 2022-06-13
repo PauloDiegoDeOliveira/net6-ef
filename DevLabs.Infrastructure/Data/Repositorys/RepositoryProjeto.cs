@@ -23,7 +23,7 @@ namespace DevLabs.Infrastructure.Data.Repositorys
         {
             return await Task.FromResult(PagedList<Projeto>
             .ToPagedList(appDbContext.Set<Projeto>()
-            .Where(x => parameters.Status == 0 ? true : x.Status == (int)parameters.Status)
+            .Where(x => parameters.Status == 0 || x.Status == (int)parameters.Status)
             .Where(x => EF.Functions.Like(x.Titulo, $"%{parameters.PalavraChave}%"))
             .Where(x => (parameters.Id == null) || parameters.Id.Contains(x.Id))
             .AsNoTracking(),
@@ -43,7 +43,7 @@ namespace DevLabs.Infrastructure.Data.Repositorys
                                     .Include(x => x.URLSDocumentacao)
                                     .Include(x => x.Contas)
                                     .FirstOrDefaultAsync(x => x.Id == projeto.Id);
-            if (consulta == null)
+            if (consulta is null)
                 return null;
 
             appDbContext.Entry(consulta).CurrentValues.SetValues(projeto);

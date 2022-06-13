@@ -54,9 +54,9 @@ namespace DevLabs.RestAPI.Extensions
     {
         public static string GetUserId(this ClaimsPrincipal principal)
         {
-            if (principal == null)
+            if (principal is null)
             {
-                throw new ArgumentException(nameof(principal));
+                throw new ArgumentException(null, nameof(principal));
             }
 
             var claim = principal.FindFirst(ClaimTypes.NameIdentifier);
@@ -65,9 +65,9 @@ namespace DevLabs.RestAPI.Extensions
 
         public static string GetUserEmail(this ClaimsPrincipal principal)
         {
-            if (principal == null)
+            if (principal is null)
             {
-                throw new ArgumentException(nameof(principal));
+                throw new ArgumentException(null, nameof(principal));
             }
 
             var claim = principal.FindFirst(ClaimTypes.Email);
@@ -76,9 +76,9 @@ namespace DevLabs.RestAPI.Extensions
 
         public static string GetUserRole(this ClaimsPrincipal principal)
         {
-            if (principal == null)
+            if (principal is null)
             {
-                throw new ArgumentException(nameof(principal));
+                throw new ArgumentException(null, nameof(principal));
             }
 
             var role = principal.FindFirst(ClaimTypes.Role);
@@ -87,9 +87,9 @@ namespace DevLabs.RestAPI.Extensions
 
         public static IEnumerable<string> GetUserClaims(this ClaimsPrincipal principal)
         {
-            if (principal == null)
+            if (principal is null)
             {
-                throw new ArgumentException(nameof(principal));
+                throw new ArgumentException(null, nameof(principal));
             }
 
             var claims = principal.Claims.Select(x => x.Type).Distinct();

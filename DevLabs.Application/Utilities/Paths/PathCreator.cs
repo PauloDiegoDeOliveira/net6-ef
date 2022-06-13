@@ -3,11 +3,11 @@ using System;
 using System.IO;
 using System.Threading.Tasks;
 
-namespace DevLabs.Application.Utilities
+namespace DevLabs.Application.Utilities.Paths
 {
-    public class PathCreator
+    public static class PathCreator
     {
-        public async Task<string> CreateIpPath(string ipPath)
+        public async static Task<string> CreateIpPath(string ipPath)
         {
             string path = await DataFolders(ipPath, $@"\");
 
@@ -18,25 +18,23 @@ namespace DevLabs.Application.Utilities
             return path;
         }
 
-        public async Task<string> CreateAbsolutePath(string absolutePath)
+        public async static Task<string> CreateAbsolutePath(string absolutePath)
         {
             return await DataFolders(absolutePath, $@"\");
         }
 
-        public async Task<string> CreateRelativePath(string absolutePath, string lastPart)
+        public async static Task<string> CreateRelativePath(string absolutePath, string lastPart)
         {
             string[] splits = absolutePath.Split(new[] { lastPart }, 2, StringSplitOptions.RemoveEmptyEntries);
             await Task.CompletedTask;
             return splits[1];
         }
 
-        public async Task<string> DataFolders(string externalPath, string charType)
+        public async static Task<string> DataFolders(string externalPath, string charType)
         {
-            DateInformations dateInformations = new DateInformations();
-
-            string path = externalPath + charType + dateInformations.GetSplitData(Date.Year) +
-                charType + dateInformations.GetSplitData(Date.Month) +
-                charType + dateInformations.GetSplitData(Date.Day) + charType;
+            string path = externalPath + charType + DateInformations.GetSplitData(Date.Year) +
+                charType + DateInformations.GetSplitData(Date.Month) +
+                charType + DateInformations.GetSplitData(Date.Day) + charType;
 
             await Task.CompletedTask;
             return Path.Combine(path, path);

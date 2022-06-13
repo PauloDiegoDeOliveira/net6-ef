@@ -47,7 +47,7 @@ namespace DevLabs.RestAPI.Controllers
         {
             return Ok(new
             {
-                mensagem = mensagem,
+                mensagem,
                 sucesso = true,
                 dados = result
             });

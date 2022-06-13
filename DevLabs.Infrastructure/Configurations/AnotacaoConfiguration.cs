@@ -16,15 +16,18 @@ namespace DevLabs.Infrastructure.Configurations
             builder.Property(p => p.Titulo)
                    .IsRequired()
                    .HasColumnName("Titulo")
+                   .HasMaxLength(150)
                    .HasColumnType("varchar(150)");
 
             builder.Property(p => p.Descricao)
                    .HasColumnName("Descricao")
-                   .HasColumnType("varchar(150)");
+                   .HasMaxLength(300)
+                   .HasColumnType("varchar(300)");
 
             builder.Property(p => p.Rota)
                    .HasColumnName("Rota")
-                   .HasColumnType("varchar(150)");
+                   .HasMaxLength(300)
+                   .HasColumnType("varchar(300)");
         }
     }
 }

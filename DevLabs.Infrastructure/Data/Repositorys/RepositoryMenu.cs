@@ -23,7 +23,7 @@ namespace DevLabs.Infrastructure.Data.Repositorys
         {
             return await Task.FromResult(PagedList<Menu>
             .ToPagedList(appDbContext.Set<Menu>()
-            .Where(x => parameters.Status == 0 ? true : x.Status == (int)parameters.Status)
+            .Where(x => parameters.Status == 0 || x.Status == (int)parameters.Status)
             .Where(x => EF.Functions.Like(x.Titulo, $"%{parameters.PalavraChave}%"))
             .Where(x => (parameters.Id == null) || parameters.Id.Contains(x.Id))
             .AsNoTracking(),

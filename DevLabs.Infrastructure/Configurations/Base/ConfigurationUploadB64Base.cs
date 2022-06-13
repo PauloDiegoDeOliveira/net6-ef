@@ -23,6 +23,7 @@ namespace DevLabs.Infrastructure.Configurations.Base
 
             builder.Property(x => x.NomeArquivo)
                    .HasColumnName("NomeArquivo")
+                   .HasMaxLength(300)
                    .HasDefaultValueSql("NEWID()");
 
             builder.Property(p => p.CaminhoRelativo)

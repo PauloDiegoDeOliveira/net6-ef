@@ -3,7 +3,8 @@ using DevLabs.Application.Applications.Base;
 using DevLabs.Application.DTOs.Pagination;
 using DevLabs.Application.DTOs.Projeto;
 using DevLabs.Application.Interfaces;
-using DevLabs.Application.Utilities;
+using DevLabs.Application.Utilities.Image;
+using DevLabs.Application.Utilities.Paths;
 using DevLabs.Domain.Core.Interfaces.Service;
 using DevLabs.Domain.Entitys;
 using DevLabs.Domain.Pagination;
@@ -34,13 +35,12 @@ namespace DevLabs.Application.Applications
         {
             Projeto objeto = mapper.Map<Projeto>(postProjetoDTO);
 
-            PathCreator pathCreator = new PathCreator();
-            objeto.PolulateInformations(await pathCreator.CreateIpPath(caminhoFisico),
-                await pathCreator.CreateAbsolutePath(caminhoAbsoluto),
-                await pathCreator.CreateRelativePath(await pathCreator.CreateAbsolutePath(caminhoAbsoluto), splitRelativo),
+            objeto.PolulateInformations(await PathCreator.CreateIpPath(caminhoFisico),
+                await PathCreator.CreateAbsolutePath(caminhoAbsoluto),
+                await PathCreator.CreateRelativePath(await PathCreator.CreateAbsolutePath(caminhoAbsoluto), splitRelativo),
                 extensao);
 
-            UploadB64Methods<Projeto> uploadClass = new UploadB64Methods<Projeto>();
+            UploadB64Methods<Projeto> uploadClass = new();
             await uploadClass.UploadImagem(objeto.CaminhoFisico, base64string);
 
             return mapper.Map<ViewProjetoIncludeDTO>(await serviceProjeto.PostAsync(objeto));
@@ -56,13 +56,12 @@ namespace DevLabs.Application.Applications
 
             if (!string.IsNullOrWhiteSpace(base64string))
             {
-                UploadB64Methods<Projeto> uploadClass = new UploadB64Methods<Projeto>();
+                UploadB64Methods<Projeto> uploadClass = new();
                 await uploadClass.DeleteImage(consulta);
 
-                PathCreator pathCreator = new PathCreator();
-                objeto.PolulateInformations(await pathCreator.CreateIpPath(caminhoFisico),
-                    await pathCreator.CreateAbsolutePath(caminhoAbsoluto),
-                    await pathCreator.CreateRelativePath(await pathCreator.CreateAbsolutePath(caminhoAbsoluto), splitRelativo),
+                objeto.PolulateInformations(await PathCreator.CreateIpPath(caminhoFisico),
+                    await PathCreator.CreateAbsolutePath(caminhoAbsoluto),
+                    await PathCreator.CreateRelativePath(await PathCreator.CreateAbsolutePath(caminhoAbsoluto), splitRelativo),
                     extensao);
 
                 await uploadClass.UploadImagem(objeto.CaminhoFisico, base64string);
@@ -82,7 +81,7 @@ namespace DevLabs.Application.Applications
             if (consulta is null)
                 return null;
 
-            UploadB64Methods<Projeto> uploadClass = new UploadB64Methods<Projeto>();
+            UploadB64Methods<Projeto> uploadClass = new();
             await uploadClass.DeleteImage(consulta);
 
             return await base.DeleteAsync(id);

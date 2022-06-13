@@ -2,17 +2,15 @@
 using System.IO;
 using System.Threading.Tasks;
 
-namespace DevLabs.Application.Utilities
+namespace DevLabs.Application.Utilities.Image
 {
     public class UploadFormMethods<TEntity> where TEntity : UploadFormBase
     {
         public async Task UploadImage(TEntity uploadForm)
         {
             string root = Path.Combine(Directory.GetCurrentDirectory(), uploadForm.CaminhoFisico);
-            using (var stream = new FileStream(root, FileMode.Create))
-            {
-                await uploadForm.ImagemUpload.CopyToAsync(stream);
-            }
+            using var stream = new FileStream(root, FileMode.Create);
+            await uploadForm.ImagemUpload.CopyToAsync(stream);
         }
 
         public async Task DeleteImage(TEntity uploadForm)

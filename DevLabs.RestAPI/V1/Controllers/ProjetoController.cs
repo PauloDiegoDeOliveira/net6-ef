@@ -1,7 +1,8 @@
 ﻿using DevLabs.Application.DTOs.Pagination;
 using DevLabs.Application.DTOs.Projeto;
 using DevLabs.Application.Interfaces;
-using DevLabs.Application.Utilities;
+using DevLabs.Application.Utilities.Image;
+using DevLabs.Application.Utilities.Paths;
 using DevLabs.Domain.Core.Interfaces.Service;
 using DevLabs.Domain.Entitys;
 using DevLabs.Domain.Enums;
@@ -59,24 +60,24 @@ namespace DevLabs.RestAPI.V1.Controllers
         {
             if (!ModelState.IsValid) return CustomResponseFail(ModelState);
 
-            PathSystem pathSystem = new PathSystem();
-            if (!await pathSystem.ValidateURLs(diretorios.ToString(), actualEnvironment))
+            if (!await PathSystem.ValidateURLs(diretorios.ToString(), actualEnvironment))
             {
                 NotificarErro("Diretório não encontrado.");
                 return CustomResponseFail(ModelState);
             }
 
-            Dictionary<string, string> Urls = await pathSystem.GetURLs(diretorios.ToString(), actualEnvironment);
+            Dictionary<string, string> Urls = await PathSystem.GetURLs(diretorios.ToString(), actualEnvironment);
 
-            ExtensionSystem extensionSystem = new ExtensionSystem();
-            string extensao = extensionSystem.GetExtensaoB64(postProjetoDTO.ImagemBase64);
-            if (extensao is null)
+            string extensao = ExtensionSystem.GetExtensaoB64(postProjetoDTO.ImagemBase64);
+            string B64String = ExtensionSystem.GetB64String(postProjetoDTO.ImagemBase64);
+
+            if (extensao is null || B64String is null)
             {
                 NotificarErro("Extensão não suportada ou texto não se encontra em Base64.");
                 return CustomResponseFail(ModelState);
             }
 
-            ViewProjetoIncludeDTO inserido = await applicationProjeto.PostAsync(postProjetoDTO, Urls["IP"], Urls["DNS"], Urls["SPLIT"], extensionSystem.base64Data, extensao);
+            ViewProjetoIncludeDTO inserido = await applicationProjeto.PostAsync(postProjetoDTO, Urls["IP"], Urls["DNS"], Urls["SPLIT"], B64String, extensao);
 
             return CustomResponseSuccess(inserido, "Projeto criado com sucesso!");
         }
@@ -94,24 +95,24 @@ namespace DevLabs.RestAPI.V1.Controllers
 
             if (!string.IsNullOrWhiteSpace(putProjetoDTO.ImagemBase64))
             {
-                PathSystem pathSystem = new PathSystem();
-                if (!await pathSystem.ValidateURLs(diretorios.ToString(), actualEnvironment))
+                if (!await PathSystem.ValidateURLs(diretorios.ToString(), actualEnvironment))
                 {
                     NotificarErro("Diretório não encontrado.");
                     return CustomResponseFail(ModelState);
                 }
 
-                Dictionary<string, string> Urls = await pathSystem.GetURLs(diretorios.ToString(), actualEnvironment);
+                Dictionary<string, string> Urls = await PathSystem.GetURLs(diretorios.ToString(), actualEnvironment);
 
-                ExtensionSystem extensionSystem = new ExtensionSystem();
-                string extensao = extensionSystem.GetExtensaoB64(putProjetoDTO.ImagemBase64);
-                if (extensao is null)
+                string extensao = ExtensionSystem.GetExtensaoB64(putProjetoDTO.ImagemBase64);
+                string B64String = ExtensionSystem.GetB64String(putProjetoDTO.ImagemBase64);
+
+                if (extensao is null || B64String is null)
                 {
                     NotificarErro("Extensão não suportada ou texto não se encontra em Base64.");
                     return CustomResponseFail(ModelState);
                 }
 
-                ViewProjetoIncludeDTO atualizado = await applicationProjeto.PutAsync(putProjetoDTO, Urls["IP"], Urls["DNS"], Urls["SPLIT"], extensionSystem.base64Data, extensao);
+                ViewProjetoIncludeDTO atualizado = await applicationProjeto.PutAsync(putProjetoDTO, Urls["IP"], Urls["DNS"], Urls["SPLIT"], B64String, extensao);
                 if (atualizado is null)
                 {
                     NotificarErro("Nenhum projeto foi encontrado com o id informado.");

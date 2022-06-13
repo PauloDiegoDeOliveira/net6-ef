@@ -1,5 +1,6 @@
 ﻿using DevLabs.Application.Applications;
 using DevLabs.Application.Interfaces;
+using DevLabs.Application.Utilities.Text;
 using DevLabs.Domain.Core.Interfaces.Repositories;
 using DevLabs.Domain.Core.Interfaces.Service;
 using DevLabs.Domain.Core.Notificacoes;
@@ -28,8 +29,11 @@ namespace DevLabs.APIRest.Configuration
             services.AddScoped<IServiceMenu, ServiceMenu>();
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
             services.AddScoped<IUser, AspNetUser>();
             services.AddScoped<INotificador, Notificador>();
+
             services.AddTransient<IConfigureOptions<SwaggerGenOptions>, ConfigureSwaggerOptions>();
         }
     }

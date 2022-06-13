@@ -16,10 +16,12 @@ namespace DevLabs.Infrastructure.Configurations
             builder.Property(p => p.Usuario)
                    .IsRequired()
                    .HasColumnName("Usuario")
+                   .HasMaxLength(150)
                    .HasColumnType("varchar(150)");
 
             builder.Property(p => p.Senha)
                    .HasColumnName("Senha")
+                   .HasMaxLength(150)
                    .HasColumnType("varchar(150)");
         }
     }

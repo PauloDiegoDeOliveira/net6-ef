@@ -15,6 +15,7 @@ namespace DevLabs.Infrastructure.Configurations
 
             builder.Property(p => p.URL)
                    .HasColumnName("URL")
+                   .HasMaxLength(200)
                    .HasColumnType("varchar(200)");
         }
     }

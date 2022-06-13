@@ -1,4 +1,4 @@
-﻿namespace DevLabs.Application.Utilities
+﻿namespace DevLabs.Application.Utilities.Hash
 {
     public class HashedPassword
     {

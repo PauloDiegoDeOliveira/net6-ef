@@ -1,4 +1,6 @@
 using DevLabs.APIRest.Configuration;
+using DevLabs.Application.Utilities.Paths;
+using DevLabs.Application.Utilities.Text;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 
@@ -64,5 +66,9 @@ app.UseCors("CorsPolicy");
 app.UseAuthorization();
 
 app.MapControllers();
+
+TextSystem.GetTextJson();
+
+PathSystem.GetUrlJson();
 
 app.Run();

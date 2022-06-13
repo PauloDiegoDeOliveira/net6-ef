@@ -1,7 +1,7 @@
 ﻿using DevLabs.Application.DTOs.Menu;
 using DevLabs.Application.DTOs.Pagination;
 using DevLabs.Application.Interfaces;
-using DevLabs.Application.Utilities;
+using DevLabs.Application.Utilities.Paths;
 using DevLabs.Domain.Core.Interfaces.Service;
 using DevLabs.Domain.Entitys;
 using DevLabs.Domain.Enums;
@@ -59,14 +59,13 @@ namespace DevLabs.RestAPI.V1.Controllers
         {
             if (!ModelState.IsValid) return CustomResponseFail(ModelState);
 
-            PathSystem pathSystem = new PathSystem();
-            if (!await pathSystem.ValidateURLs(diretorios.ToString(), actualEnvironment))
+            if (!await PathSystem.ValidateURLs(diretorios.ToString(), actualEnvironment))
             {
                 NotificarErro("Diretório não encontrado.");
                 return CustomResponseFail(ModelState);
             }
 
-            Dictionary<string, string> Urls = await pathSystem.GetURLs(diretorios.ToString(), actualEnvironment);
+            Dictionary<string, string> Urls = await PathSystem.GetURLs(diretorios.ToString(), actualEnvironment);
 
             ViewMenuDTO inserido = await applicationMenu.PostAsync(postMenuDTO, Urls["IP"], Urls["DNS"], Urls["SPLIT"]);
 
@@ -86,14 +85,13 @@ namespace DevLabs.RestAPI.V1.Controllers
 
             if (putMenuDTO.ImagemUpload is not null)
             {
-                PathSystem pathSystem = new PathSystem();
-                if (!await pathSystem.ValidateURLs(diretorios.ToString(), actualEnvironment))
+                if (!await PathSystem.ValidateURLs(diretorios.ToString(), actualEnvironment))
                 {
                     NotificarErro("Diretório não encontrado.");
                     return CustomResponseFail(ModelState);
                 }
 
-                Dictionary<string, string> Urls = await pathSystem.GetURLs(diretorios.ToString(), actualEnvironment);
+                Dictionary<string, string> Urls = await PathSystem.GetURLs(diretorios.ToString(), actualEnvironment);
 
                 ViewMenuDTO atualizado = await applicationMenu.PutAsync(putMenuDTO, Urls["IP"], Urls["DNS"], Urls["SPLIT"]);
                 if (atualizado is null)

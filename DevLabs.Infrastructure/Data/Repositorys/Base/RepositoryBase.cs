@@ -45,7 +45,7 @@ namespace DevLabs.Infrastructure.Data.Repositorys.Base
         public virtual async Task<TEntity> DeleteAsync(Guid id)
         {
             var obj = await GetByIdAsync(id);
-            if (obj != null)
+            if (obj is not null)
             {
                 appDbContext.Remove(obj);
                 await appDbContext.SaveChangesAsync();

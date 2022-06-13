@@ -3,7 +3,7 @@ using System;
 using System.IO;
 using System.Threading.Tasks;
 
-namespace DevLabs.Application.Utilities
+namespace DevLabs.Application.Utilities.Image
 {
     public class UploadB64Methods<TEntity> where TEntity : UploadB64Base
     {
