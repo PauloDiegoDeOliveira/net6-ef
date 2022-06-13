@@ -45,7 +45,6 @@ namespace DevLabs.Application.Validations.Menu
                     .GreaterThan(0)
                     .WithMessage("O tamanho da imagem é muito pequeno");
 
-                // 10996999 = 10mb;
                 RuleFor(x => x.ImagemUpload.Length)
                     .NotNull()
                     .NotEmpty()
