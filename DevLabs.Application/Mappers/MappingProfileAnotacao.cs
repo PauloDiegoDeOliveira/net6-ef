@@ -13,9 +13,9 @@ namespace DevLabs.Application.Mappers
 
         private void Map()
         {
-            CreateMap<PostAnotacaoDTO, Anotacao>().ReverseMap();
-            CreateMap<PutAnotacaoDTO, Anotacao>().ReverseMap();
-            CreateMap<Anotacao, ViewAnotacaoDTO>().ReverseMap();
+            CreateMap<PostAnotacaoDto, Anotacao>().ReverseMap();
+            CreateMap<PutAnotacaoDto, Anotacao>().ReverseMap();
+            CreateMap<Anotacao, ViewAnotacaoDto>().ReverseMap();
         }
     }
 }

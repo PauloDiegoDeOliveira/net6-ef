@@ -3,7 +3,7 @@ using System;
 
 namespace DevLabs.Application.DTOs.Projeto
 {
-    public class ViewProjetoPadraoDTO
+    public class ViewProjetoPadraoDto
     {
         public Guid Id { get; set; }
 

@@ -13,9 +13,9 @@ namespace DevLabs.Application.Mappers
 
         private void Map()
         {
-            CreateMap<PostMenuDTO, Menu>().ReverseMap();
-            CreateMap<PutMenuDTO, Menu>().ReverseMap();
-            CreateMap<Menu, ViewMenuDTO>().ReverseMap();
+            CreateMap<PostMenuDto, Menu>().ReverseMap();
+            CreateMap<PutMenuDto, Menu>().ReverseMap();
+            CreateMap<Menu, ViewMenuDto>().ReverseMap();
         }
     }
 }

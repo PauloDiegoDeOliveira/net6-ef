@@ -17,9 +17,9 @@ namespace DevLabs.Domain.Services
             this.repositoryProjeto = repositoryProjeto;
         }
 
-        public async Task<PagedList<Projeto>> GetPaginationAsync(ParametersPalavraChave parameters)
+        public async Task<PagedList<Projeto>> GetPaginationAsync(ParametersPalavraChave parametersPalavraChave)
         {
-            return await repositoryProjeto.GetPaginationAsync(parameters);
+            return await repositoryProjeto.GetPaginationAsync(parametersPalavraChave);
         }
 
         public async Task<Projeto> GetByIdDetailsAsync(Guid id)

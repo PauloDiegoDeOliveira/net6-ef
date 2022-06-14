@@ -4,15 +4,15 @@ using System.Collections.Generic;
 
 namespace DevLabs.Application.DTOs.Pagination
 {
-    public class ViewPagedListDTO<TEntity, TView> where TEntity : EntityBase where TView : class
+    public class ViewPagedListDto<TEntity, TView> where TEntity : EntityBase where TView : class
     {
         public ICollection<TView> Pagina { get; set; }
-        public ViewPaginationDataDTO<TEntity> Dados { get; set; }
+        public ViewPaginationDataDto<TEntity> Dados { get; set; }
 
-        public ViewPagedListDTO(PagedList<TEntity> pagedList, List<TView> list)
+        public ViewPagedListDto(PagedList<TEntity> pagedList, List<TView> list)
         {
             Pagina = list;
-            Dados = new ViewPaginationDataDTO<TEntity>(pagedList);
+            Dados = new ViewPaginationDataDto<TEntity>(pagedList);
         }
     }
 }

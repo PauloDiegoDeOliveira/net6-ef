@@ -8,18 +8,18 @@ using System.Threading.Tasks;
 
 namespace DevLabs.Application.Interfaces
 {
-    public interface IApplicationAnotacao : IApplicationBase<Anotacao, ViewAnotacaoDTO, PostAnotacaoDTO, PutAnotacaoDTO>
+    public interface IApplicationAnotacao : IApplicationBase<Anotacao, ViewAnotacaoDto, PostAnotacaoDto, PutAnotacaoDto>
     {
-        Task<ViewPagedListDTO<Anotacao, ViewAnotacaoDTO>> GetPaginationAsync(ParametersPalavraChave parametersPalavraChave);
+        Task<ViewPagedListDto<Anotacao, ViewAnotacaoDto>> GetPaginationAsync(ParametersPalavraChave parametersPalavraChave);
 
-        Task<ViewAnotacaoDTO> PostAsync(PostAnotacaoDTO postAnotacaoDTO, string caminhoFisico, string caminhoAbsoluto, string splitRelativo);
+        Task<ViewAnotacaoDto> PostAsync(PostAnotacaoDto postAnotacaoDTO, string caminhoFisico, string caminhoAbsoluto, string splitRelativo);
 
-        Task<ViewAnotacaoDTO> PutAsync(PutAnotacaoDTO putAnotacaoDTO, string caminhoFisico, string caminhoAbsoluto, string splitRelativo);
+        Task<ViewAnotacaoDto> PutAsync(PutAnotacaoDto putAnotacaoDTO, string caminhoFisico, string caminhoAbsoluto, string splitRelativo);
 
         bool ValidateIdAnotacaoPut(Guid id);
 
-        bool ValidateNamePost(PostAnotacaoDTO dto);
+        bool ValidateNamePost(PostAnotacaoDto dto);
 
-        bool ValidateNamePut(PutAnotacaoDTO dto);
+        bool ValidateNamePut(PutAnotacaoDto dto);
     }
 }

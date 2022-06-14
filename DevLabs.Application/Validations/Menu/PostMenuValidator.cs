@@ -4,7 +4,7 @@ using FluentValidation;
 
 namespace DevLabs.Application.Validations.Menu
 {
-    public class PostMenuValidator : AbstractValidator<PostMenuDTO>
+    public class PostMenuValidator : AbstractValidator<PostMenuDto>
     {
         private readonly IApplicationMenu applicationMenu;
 
@@ -59,7 +59,7 @@ namespace DevLabs.Application.Validations.Menu
             });
         }
 
-        private bool ValidateNamePost(PostMenuDTO dto)
+        private bool ValidateNamePost(PostMenuDto dto)
         {
             return applicationMenu.ValidateNamePost(dto);
         }

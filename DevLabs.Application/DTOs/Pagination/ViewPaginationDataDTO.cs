@@ -2,7 +2,7 @@
 
 namespace DevLabs.Application.DTOs.Pagination
 {
-    public class ViewPaginationDataDTO<T>
+    public class ViewPaginationDataDto<T>
     {
         public int PaginaAtual { get; private set; }
         public int TotalPaginas { get; private set; }
@@ -11,7 +11,7 @@ namespace DevLabs.Application.DTOs.Pagination
         public bool ExistePaginaAnterior { get; private set; }
         public bool ExistePaginaPosterior { get; private set; }
 
-        public ViewPaginationDataDTO(PagedList<T> pagedList)
+        public ViewPaginationDataDto(PagedList<T> pagedList)
         {
             ContagemTotalResultados = pagedList.ContagemTotalResultados;
             ResultadosExibidosPagina = pagedList.ResultadosExibidosPagina;

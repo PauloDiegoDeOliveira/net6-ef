@@ -19,15 +19,15 @@ namespace DevLabs.Infrastructure.Data.Repositorys
             this.appDbContext = appDbContext;
         }
 
-        public async Task<PagedList<Menu>> GetPaginationAsync(ParametersPalavraChave parameters)
+        public async Task<PagedList<Menu>> GetPaginationAsync(ParametersPalavraChave parametersPalavraChave)
         {
             return await Task.FromResult(PagedList<Menu>
             .ToPagedList(appDbContext.Set<Menu>()
-            .Where(x => parameters.Status == 0 || x.Status == (int)parameters.Status)
-            .Where(x => EF.Functions.Like(x.Titulo, $"%{parameters.PalavraChave}%"))
-            .Where(x => (parameters.Id == null) || parameters.Id.Contains(x.Id))
+            .Where(x => parametersPalavraChave.Status == 0 || x.Status == (int)parametersPalavraChave.Status)
+            .Where(x => EF.Functions.Like(x.Titulo, $"%{parametersPalavraChave.PalavraChave}%"))
+            .Where(x => (parametersPalavraChave.Id == null) || parametersPalavraChave.Id.Contains(x.Id))
             .AsNoTracking(),
-             parameters.NumeroPagina, parameters.ResultadosExibidos));
+             parametersPalavraChave.NumeroPagina, parametersPalavraChave.ResultadosExibidos));
         }
 
         public bool ValidateIdMenuPut(Guid id)

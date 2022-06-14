@@ -2,7 +2,7 @@
 
 namespace DevLabs.Application.DTOs.Conta
 {
-    public class PostContaDTO
+    public class PostContaDto
     {
         public string Usuario { get; set; }
 

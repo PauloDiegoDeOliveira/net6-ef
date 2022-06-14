@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace DevLabs.Application.Applications
 {
-    public class ApplicationProjeto : ApplicationBase<Projeto, ViewProjetoIncludeDTO, PostProjetoDTO, PutProjetoDTO>, IApplicationProjeto
+    public class ApplicationProjeto : ApplicationBase<Projeto, ViewProjetoIncludeDto, PostProjetoDto, PutProjetoDto>, IApplicationProjeto
     {
         private readonly IServiceProjeto serviceProjeto;
 
@@ -25,13 +25,13 @@ namespace DevLabs.Application.Applications
             this.serviceProjeto = serviceProjeto;
         }
 
-        public async Task<ViewPagedListDTO<Projeto, ViewProjetoPadraoDTO>> GetPaginationAsync(ParametersPalavraChave parameters)
+        public async Task<ViewPagedListDto<Projeto, ViewProjetoPadraoDto>> GetPaginationAsync(ParametersPalavraChave parametersPalavraChave)
         {
-            PagedList<Projeto> pagedList = await serviceProjeto.GetPaginationAsync(parameters);
-            return new ViewPagedListDTO<Projeto, ViewProjetoPadraoDTO>(pagedList, mapper.Map<List<ViewProjetoPadraoDTO>>(pagedList));
+            PagedList<Projeto> pagedList = await serviceProjeto.GetPaginationAsync(parametersPalavraChave);
+            return new ViewPagedListDto<Projeto, ViewProjetoPadraoDto>(pagedList, mapper.Map<List<ViewProjetoPadraoDto>>(pagedList));
         }
 
-        public async Task<ViewProjetoIncludeDTO> PostAsync(PostProjetoDTO postProjetoDTO, string caminhoFisico, string caminhoAbsoluto, string splitRelativo, string base64string, string extensao)
+        public async Task<ViewProjetoIncludeDto> PostAsync(PostProjetoDto postProjetoDTO, string caminhoFisico, string caminhoAbsoluto, string splitRelativo, string base64string, string extensao)
         {
             Projeto objeto = mapper.Map<Projeto>(postProjetoDTO);
 
@@ -43,10 +43,10 @@ namespace DevLabs.Application.Applications
             UploadB64Methods<Projeto> uploadClass = new();
             await uploadClass.UploadImagem(objeto.CaminhoFisico, base64string);
 
-            return mapper.Map<ViewProjetoIncludeDTO>(await serviceProjeto.PostAsync(objeto));
+            return mapper.Map<ViewProjetoIncludeDto>(await serviceProjeto.PostAsync(objeto));
         }
 
-        public async Task<ViewProjetoIncludeDTO> PutAsync(PutProjetoDTO putProjetoDTO, string caminhoFisico, string caminhoAbsoluto, string splitRelativo, string base64string, string extensao)
+        public async Task<ViewProjetoIncludeDto> PutAsync(PutProjetoDto putProjetoDTO, string caminhoFisico, string caminhoAbsoluto, string splitRelativo, string base64string, string extensao)
         {
             Projeto objeto = mapper.Map<Projeto>(putProjetoDTO);
             Projeto consulta = await serviceProjeto.GetByIdAsync(putProjetoDTO.Id);
@@ -71,10 +71,10 @@ namespace DevLabs.Application.Applications
                 objeto.PutInformations(consulta);
             }
 
-            return mapper.Map<ViewProjetoIncludeDTO>(await serviceProjeto.PutAsync(objeto));
+            return mapper.Map<ViewProjetoIncludeDto>(await serviceProjeto.PutAsync(objeto));
         }
 
-        public override async Task<ViewProjetoIncludeDTO> DeleteAsync(Guid id)
+        public override async Task<ViewProjetoIncludeDto> DeleteAsync(Guid id)
         {
             Projeto consulta = await serviceProjeto.GetByIdAsync(id);
 
@@ -87,10 +87,10 @@ namespace DevLabs.Application.Applications
             return await base.DeleteAsync(id);
         }
 
-        public async Task<ViewProjetoIncludeDTO> GetByIdDetailsAsync(Guid id)
+        public async Task<ViewProjetoIncludeDto> GetByIdDetailsAsync(Guid id)
         {
             Projeto consulta = await serviceProjeto.GetByIdDetailsAsync(id);
-            return mapper.Map<ViewProjetoIncludeDTO>(consulta);
+            return mapper.Map<ViewProjetoIncludeDto>(consulta);
         }
 
         public bool ValidateIdProjectPut(Guid id)
@@ -98,14 +98,14 @@ namespace DevLabs.Application.Applications
             return serviceProjeto.ValidateIdProjectPut(id);
         }
 
-        public bool ValidateNamePost(PostProjetoDTO dto)
+        public bool ValidateNamePost(PostProjetoDto dto)
         {
             Projeto obj = mapper.Map<Projeto>(dto);
             bool query = serviceProjeto.ValidateNamePost(obj);
             return mapper.Map<bool>(query);
         }
 
-        public bool ValidateNamePut(PutProjetoDTO dto)
+        public bool ValidateNamePut(PutProjetoDto dto)
         {
             Projeto obj = mapper.Map<Projeto>(dto);
             bool query = serviceProjeto.ValidateNamePut(obj);

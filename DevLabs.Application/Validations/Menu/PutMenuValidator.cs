@@ -5,7 +5,7 @@ using System;
 
 namespace DevLabs.Application.Validations.Menu
 {
-    public class PutMenuValidator : AbstractValidator<PutMenuDTO>
+    public class PutMenuValidator : AbstractValidator<PutMenuDto>
     {
         private readonly IApplicationMenu applicationMenu;
 
@@ -77,7 +77,7 @@ namespace DevLabs.Application.Validations.Menu
             return applicationMenu.ValidateIdMenuPut(id);
         }
 
-        private bool ValidateNamePut(PutMenuDTO dto)
+        private bool ValidateNamePut(PutMenuDto dto)
         {
             return applicationMenu.ValidateNamePut(dto);
         }

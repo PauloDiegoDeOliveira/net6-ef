@@ -2,7 +2,7 @@
 
 namespace DevLabs.Application.DTOs.Anotacao
 {
-    public class PutAnotacaoDTO : PostAnotacaoDTO
+    public class PutAnotacaoDto : PostAnotacaoDto
     {
         public Guid Id { get; set; }
     }

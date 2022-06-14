@@ -38,7 +38,7 @@ namespace DevLabs.RestAPI.V1.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAllAsync([FromQuery] ParametersPalavraChave parameters)
         {
-            ViewPagedListDTO<Menu, ViewMenuDTO> result = await applicationMenu.GetPaginationAsync(parameters);
+            ViewPagedListDto<Menu, ViewMenuDto> result = await applicationMenu.GetPaginationAsync(parameters);
             if (result.Pagina.Count is 0)
             {
                 NotificarErro("Nenhuma menu foi encontrado.");
@@ -55,7 +55,7 @@ namespace DevLabs.RestAPI.V1.Controllers
         /// <param name="diretorios"></param>
         /// <returns></returns>
         [HttpPost]
-        public async Task<IActionResult> PostAsync([FromForm] PostMenuDTO postMenuDTO, Diretorios diretorios)
+        public async Task<IActionResult> PostAsync([FromForm] PostMenuDto postMenuDTO, Diretorios diretorios)
         {
             if (!ModelState.IsValid) return CustomResponseFail(ModelState);
 
@@ -67,7 +67,7 @@ namespace DevLabs.RestAPI.V1.Controllers
 
             Dictionary<string, string> Urls = await PathSystem.GetURLs(diretorios.ToString(), actualEnvironment);
 
-            ViewMenuDTO inserido = await applicationMenu.PostAsync(postMenuDTO, Urls["IP"], Urls["DNS"], Urls["SPLIT"]);
+            ViewMenuDto inserido = await applicationMenu.PostAsync(postMenuDTO, Urls["IP"], Urls["DNS"], Urls["SPLIT"]);
 
             return CustomResponseSuccess(inserido, "Menu criado com sucesso!");
         }
@@ -79,7 +79,7 @@ namespace DevLabs.RestAPI.V1.Controllers
         /// <param name="diretorios"></param>
         /// <returns></returns>
         [HttpPut]
-        public async Task<IActionResult> PutAsync([FromForm] PutMenuDTO putMenuDTO, Diretorios diretorios)
+        public async Task<IActionResult> PutAsync([FromForm] PutMenuDto putMenuDTO, Diretorios diretorios)
         {
             if (!ModelState.IsValid) return CustomResponseFail(ModelState);
 
@@ -93,7 +93,7 @@ namespace DevLabs.RestAPI.V1.Controllers
 
                 Dictionary<string, string> Urls = await PathSystem.GetURLs(diretorios.ToString(), actualEnvironment);
 
-                ViewMenuDTO atualizado = await applicationMenu.PutAsync(putMenuDTO, Urls["IP"], Urls["DNS"], Urls["SPLIT"]);
+                ViewMenuDto atualizado = await applicationMenu.PutAsync(putMenuDTO, Urls["IP"], Urls["DNS"], Urls["SPLIT"]);
                 if (atualizado is null)
                 {
                     NotificarErro("Nenhum menu foi encontrado com o id informado.");
@@ -104,7 +104,7 @@ namespace DevLabs.RestAPI.V1.Controllers
             }
             else
             {
-                ViewMenuDTO atualizado = await applicationMenu.PutAsync(putMenuDTO, "", "", "");
+                ViewMenuDto atualizado = await applicationMenu.PutAsync(putMenuDTO, "", "", "");
                 if (atualizado is null)
                 {
                     NotificarErro("Nenhum menu foi encontrado com o id informado.");
@@ -123,7 +123,7 @@ namespace DevLabs.RestAPI.V1.Controllers
         [HttpDelete("{id:guid}")]
         public async Task<IActionResult> DeleteAsync(Guid id)
         {
-            ViewMenuDTO result = await applicationMenu.PutStatusAsync(id, Status.Excluido);
+            ViewMenuDto result = await applicationMenu.PutStatusAsync(id, Status.Excluido);
             if (result is null)
             {
                 NotificarErro("Nenhum menu foi encontrado com o id informado.");
@@ -148,7 +148,7 @@ namespace DevLabs.RestAPI.V1.Controllers
                 return CustomResponseFail(ModelState);
             }
 
-            ViewMenuDTO result = await applicationMenu.PutStatusAsync(id, status);
+            ViewMenuDto result = await applicationMenu.PutStatusAsync(id, status);
             if (result is null)
             {
                 NotificarErro("Nenhum menu foi encontrado com o id informado.");

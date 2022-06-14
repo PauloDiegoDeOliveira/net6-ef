@@ -17,26 +17,26 @@ namespace DevLabs.Application.Mappers
 
         private void Map()
         {
-            CreateMap<PostProjetoDTO, Projeto>().ReverseMap();
-            CreateMap<PutProjetoDTO, Projeto>().ReverseMap();
-            CreateMap<Projeto, ViewProjetoIncludeDTO>().ReverseMap();
-            CreateMap<Projeto, ViewProjetoPadraoDTO>().ReverseMap();
+            CreateMap<PostProjetoDto, Projeto>().ReverseMap();
+            CreateMap<PutProjetoDto, Projeto>().ReverseMap();
+            CreateMap<Projeto, ViewProjetoIncludeDto>().ReverseMap();
+            CreateMap<Projeto, ViewProjetoPadraoDto>().ReverseMap();
 
-            CreateMap<PostURLHomologacaoDTO, URLHomologacao>().ReverseMap();
-            CreateMap<PutURLHomologacaoDTO, URLHomologacao>().ReverseMap();
-            CreateMap<URLHomologacao, ViewURLHomologacaoDTO>().ReverseMap();
+            CreateMap<PostUrlHomologacaoDto, URLHomologacao>().ReverseMap();
+            CreateMap<PutUrlHomologacaoDto, URLHomologacao>().ReverseMap();
+            CreateMap<URLHomologacao, ViewUrlHomologacaoDto>().ReverseMap();
 
-            CreateMap<PostURLProducaoDTO, URLProducao>().ReverseMap();
-            CreateMap<PutURLProducaoDTO, URLProducao>().ReverseMap();
-            CreateMap<URLProducao, ViewURLProducaoDTO>().ReverseMap();
+            CreateMap<PostUrlProducaoDto, URLProducao>().ReverseMap();
+            CreateMap<PutUrlProducaoDto, URLProducao>().ReverseMap();
+            CreateMap<URLProducao, ViewUrlProducaoDto>().ReverseMap();
 
-            CreateMap<PostURLDocumentacaoDTO, URLDocumentacao>().ReverseMap();
-            CreateMap<PutURLDocumentacaoDTO, URLDocumentacao>().ReverseMap();
-            CreateMap<URLDocumentacao, ViewURLDocumentacaoDTO>().ReverseMap();
+            CreateMap<PostUrlDocumentacaoDto, URLDocumentacao>().ReverseMap();
+            CreateMap<PutUrlDocumentacaoDto, URLDocumentacao>().ReverseMap();
+            CreateMap<URLDocumentacao, ViewUrlDocumentacaoDto>().ReverseMap();
 
-            CreateMap<PostContaDTO, Conta>().ReverseMap();
-            CreateMap<PutContaDTO, Conta>().ReverseMap();
-            CreateMap<Conta, ViewContaDTO>().ReverseMap();
+            CreateMap<PostContaDto, Conta>().ReverseMap();
+            CreateMap<PutContaDto, Conta>().ReverseMap();
+            CreateMap<Conta, ViewContaDto>().ReverseMap();
         }
     }
 }

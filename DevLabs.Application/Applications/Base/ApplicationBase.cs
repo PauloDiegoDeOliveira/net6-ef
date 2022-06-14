@@ -41,16 +41,16 @@ namespace DevLabs.Application.Applications.Base
             return new EntityToDto<TEntity, TPut>(obj, mapper.Map<TPut>(obj));
         }
 
-        public virtual async Task<TView> PostAsync(TPost obj)
+        public virtual async Task<TView> PostAsync(TPost post)
         {
-            TEntity consulta = mapper.Map<TEntity>(obj);
+            TEntity consulta = mapper.Map<TEntity>(post);
             consulta = await serviceBase.PostAsync(consulta);
             return mapper.Map<TView>(consulta);
         }
 
-        public virtual async Task<TView> PutAsync(TPut obj)
+        public virtual async Task<TView> PutAsync(TPut put)
         {
-            TEntity consulta = mapper.Map<TEntity>(obj);
+            TEntity consulta = mapper.Map<TEntity>(put);
             consulta = await serviceBase.PutAsync(consulta);
             return mapper.Map<TView>(consulta);
         }

@@ -17,9 +17,9 @@ namespace DevLabs.Domain.Services
             this.repositoryAnotacao = repositoryAnotacao;
         }
 
-        public async Task<PagedList<Anotacao>> GetPaginationAsync(ParametersPalavraChave parameters)
+        public async Task<PagedList<Anotacao>> GetPaginationAsync(ParametersPalavraChave parametersPalavraChave)
         {
-            return await repositoryAnotacao.GetPaginationAsync(parameters);
+            return await repositoryAnotacao.GetPaginationAsync(parametersPalavraChave);
         }
 
         public bool ValidateIdAnotacaoPut(Guid id)

@@ -8,21 +8,21 @@ using System.Threading.Tasks;
 
 namespace DevLabs.Application.Interfaces
 {
-    public interface IApplicationProjeto : IApplicationBase<Projeto, ViewProjetoIncludeDTO, PostProjetoDTO, PutProjetoDTO>
+    public interface IApplicationProjeto : IApplicationBase<Projeto, ViewProjetoIncludeDto, PostProjetoDto, PutProjetoDto>
     {
-        Task<ViewPagedListDTO<Projeto, ViewProjetoPadraoDTO>> GetPaginationAsync(ParametersPalavraChave parametersPalavraChave);
+        Task<ViewPagedListDto<Projeto, ViewProjetoPadraoDto>> GetPaginationAsync(ParametersPalavraChave parametersPalavraChave);
 
-        Task<ViewProjetoIncludeDTO> PostAsync(PostProjetoDTO postProjetoDTO, string caminhoFisico, string caminhoAbsoluto, string splitRelativo, string base64string, string extensao);
+        Task<ViewProjetoIncludeDto> PostAsync(PostProjetoDto postProjetoDTO, string caminhoFisico, string caminhoAbsoluto, string splitRelativo, string base64string, string extensao);
 
-        Task<ViewProjetoIncludeDTO> PutAsync(PutProjetoDTO putProjetoDTO, string caminhoFisico, string caminhoAbsoluto, string splitRelativo, string base64string, string extensao);
+        Task<ViewProjetoIncludeDto> PutAsync(PutProjetoDto putProjetoDTO, string caminhoFisico, string caminhoAbsoluto, string splitRelativo, string base64string, string extensao);
 
-        Task<ViewProjetoIncludeDTO> GetByIdDetailsAsync(Guid id);
+        Task<ViewProjetoIncludeDto> GetByIdDetailsAsync(Guid id);
 
         bool ValidateIdProjectPut(Guid id);
 
-        bool ValidateNamePost(PostProjetoDTO dto);
+        bool ValidateNamePost(PostProjetoDto dto);
 
-        bool ValidateNamePut(PutProjetoDTO dto);
+        bool ValidateNamePut(PutProjetoDto dto);
 
         bool ValidateIdURLHomologacaoPut(Guid id);
 

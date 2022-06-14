@@ -3,7 +3,7 @@ using System;
 
 namespace DevLabs.Application.DTOs.Anotacao
 {
-    public class ViewAnotacaoDTO
+    public class ViewAnotacaoDto
     {
         public Guid Id { get; set; }
 

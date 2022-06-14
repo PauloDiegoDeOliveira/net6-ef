@@ -9,7 +9,7 @@ using System;
 
 namespace DevLabs.Application.Validations.Projeto
 {
-    public class PutProjetoValidator : AbstractValidator<PutProjetoDTO>
+    public class PutProjetoValidator : AbstractValidator<PutProjetoDto>
     {
         private readonly IApplicationProjeto applicationProjeto;
 
@@ -74,13 +74,13 @@ namespace DevLabs.Application.Validations.Projeto
                 .WithMessage("O status do projeto não pode ser vazio.");
 
             RuleForEach(x => x.URLSHomologacao)
-                .SetValidator(new ReferenciaURLHomologacaoValidator(applicationProjeto));
+                .SetValidator(new ReferenciaUrlHomologacaoValidator(applicationProjeto));
 
             RuleForEach(x => x.URLSProducao)
-                .SetValidator(new ReferenciaURLProducaoValidator(applicationProjeto));
+                .SetValidator(new ReferenciaUrlProducaoValidator(applicationProjeto));
 
             RuleForEach(x => x.URLSDocumentacao)
-                .SetValidator(new ReferenciaURLDocumentacaoValidator(applicationProjeto));
+                .SetValidator(new ReferenciaUrlDocumentacaoValidator(applicationProjeto));
 
             RuleForEach(x => x.Contas)
                 .SetValidator(new ReferenciaContaValidator(applicationProjeto));
@@ -91,7 +91,7 @@ namespace DevLabs.Application.Validations.Projeto
             return applicationProjeto.ValidateIdProjectPut(id);
         }
 
-        private bool ValidateNamePut(PutProjetoDTO dto)
+        private bool ValidateNamePut(PutProjetoDto dto)
         {
             return applicationProjeto.ValidateNamePut(dto);
         }

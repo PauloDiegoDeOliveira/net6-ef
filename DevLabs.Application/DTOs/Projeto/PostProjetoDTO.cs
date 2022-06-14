@@ -8,7 +8,7 @@ using System.Collections.Generic;
 
 namespace DevLabs.Application.DTOs.Projeto
 {
-    public class PostProjetoDTO
+    public class PostProjetoDto
     {
         public string ImagemBase64 { get; set; }
 
@@ -36,12 +36,12 @@ namespace DevLabs.Application.DTOs.Projeto
 
         public Status Status { get; set; }
 
-        public List<PostURLHomologacaoDTO> URLSHomologacao { get; set; }
+        public List<PostUrlHomologacaoDto> URLSHomologacao { get; set; }
 
-        public List<PostURLProducaoDTO> URLSProducao { get; set; }
+        public List<PostUrlProducaoDto> URLSProducao { get; set; }
 
-        public List<PostURLDocumentacaoDTO> URLSDocumentacao { get; set; }
+        public List<PostUrlDocumentacaoDto> URLSDocumentacao { get; set; }
 
-        public List<PostContaDTO> Contas { get; set; }
+        public List<PostContaDto> Contas { get; set; }
     }
 }

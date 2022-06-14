@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace DevLabs.Application.Applications
 {
-    public class ApplicationMenu : ApplicationBase<Menu, ViewMenuDTO, PostMenuDTO, PutMenuDTO>, IApplicationMenu
+    public class ApplicationMenu : ApplicationBase<Menu, ViewMenuDto, PostMenuDto, PutMenuDto>, IApplicationMenu
     {
         private readonly IServiceMenu serviceMenu;
 
@@ -25,13 +25,13 @@ namespace DevLabs.Application.Applications
             this.serviceMenu = serviceMenu;
         }
 
-        public async Task<ViewPagedListDTO<Menu, ViewMenuDTO>> GetPaginationAsync(ParametersPalavraChave parameters)
+        public async Task<ViewPagedListDto<Menu, ViewMenuDto>> GetPaginationAsync(ParametersPalavraChave parametersPalavraChave)
         {
-            PagedList<Menu> pagedList = await serviceMenu.GetPaginationAsync(parameters);
-            return new ViewPagedListDTO<Menu, ViewMenuDTO>(pagedList, mapper.Map<List<ViewMenuDTO>>(pagedList));
+            PagedList<Menu> pagedList = await serviceMenu.GetPaginationAsync(parametersPalavraChave);
+            return new ViewPagedListDto<Menu, ViewMenuDto>(pagedList, mapper.Map<List<ViewMenuDto>>(pagedList));
         }
 
-        public async Task<ViewMenuDTO> PostAsync(PostMenuDTO postMenuDTO, string caminhoFisico, string caminhoAbsoluto, string splitRelativo)
+        public async Task<ViewMenuDto> PostAsync(PostMenuDto postMenuDTO, string caminhoFisico, string caminhoAbsoluto, string splitRelativo)
         {
             Menu objeto = mapper.Map<Menu>(postMenuDTO);
 
@@ -42,10 +42,10 @@ namespace DevLabs.Application.Applications
             UploadFormMethods<Menu> uploadClass = new();
             await uploadClass.UploadImage(objeto);
 
-            return mapper.Map<ViewMenuDTO>(await serviceMenu.PostAsync(objeto));
+            return mapper.Map<ViewMenuDto>(await serviceMenu.PostAsync(objeto));
         }
 
-        public async Task<ViewMenuDTO> PutAsync(PutMenuDTO putMenuDTO, string caminhoFisico, string caminhoAbsoluto, string splitRelativo)
+        public async Task<ViewMenuDto> PutAsync(PutMenuDto putMenuDTO, string caminhoFisico, string caminhoAbsoluto, string splitRelativo)
         {
             Menu objeto = mapper.Map<Menu>(putMenuDTO);
             Menu consulta = await serviceMenu.GetByIdAsync(putMenuDTO.Id);
@@ -69,10 +69,10 @@ namespace DevLabs.Application.Applications
                 objeto.PutInformations(consulta);
             }
 
-            return mapper.Map<ViewMenuDTO>(await serviceMenu.PutAsync(objeto));
+            return mapper.Map<ViewMenuDto>(await serviceMenu.PutAsync(objeto));
         }
 
-        public override async Task<ViewMenuDTO> DeleteAsync(Guid id)
+        public override async Task<ViewMenuDto> DeleteAsync(Guid id)
         {
             Menu consulta = await serviceMenu.GetByIdAsync(id);
 
@@ -89,14 +89,14 @@ namespace DevLabs.Application.Applications
             return serviceMenu.ValidateIdMenuPut(id);
         }
 
-        public bool ValidateNamePost(PostMenuDTO dto)
+        public bool ValidateNamePost(PostMenuDto dto)
         {
             Menu obj = mapper.Map<Menu>(dto);
             bool query = serviceMenu.ValidateNamePost(obj);
             return mapper.Map<bool>(query);
         }
 
-        public bool ValidateNamePut(PutMenuDTO dto)
+        public bool ValidateNamePut(PutMenuDto dto)
         {
             Menu obj = mapper.Map<Menu>(dto);
             bool query = serviceMenu.ValidateNamePut(obj);

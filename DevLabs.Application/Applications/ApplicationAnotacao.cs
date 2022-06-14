@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace DevLabs.Application.Applications
 {
-    public class ApplicationAnotacao : ApplicationBase<Anotacao, ViewAnotacaoDTO, PostAnotacaoDTO, PutAnotacaoDTO>, IApplicationAnotacao
+    public class ApplicationAnotacao : ApplicationBase<Anotacao, ViewAnotacaoDto, PostAnotacaoDto, PutAnotacaoDto>, IApplicationAnotacao
     {
         private readonly IServiceAnotacao serviceAnotacao;
 
@@ -25,13 +25,13 @@ namespace DevLabs.Application.Applications
             this.serviceAnotacao = serviceAnotacao;
         }
 
-        public async Task<ViewPagedListDTO<Anotacao, ViewAnotacaoDTO>> GetPaginationAsync(ParametersPalavraChave parameters)
+        public async Task<ViewPagedListDto<Anotacao, ViewAnotacaoDto>> GetPaginationAsync(ParametersPalavraChave parametersPalavraChave)
         {
-            PagedList<Anotacao> pagedList = await serviceAnotacao.GetPaginationAsync(parameters);
-            return new ViewPagedListDTO<Anotacao, ViewAnotacaoDTO>(pagedList, mapper.Map<List<ViewAnotacaoDTO>>(pagedList));
+            PagedList<Anotacao> pagedList = await serviceAnotacao.GetPaginationAsync(parametersPalavraChave);
+            return new ViewPagedListDto<Anotacao, ViewAnotacaoDto>(pagedList, mapper.Map<List<ViewAnotacaoDto>>(pagedList));
         }
 
-        public async Task<ViewAnotacaoDTO> PostAsync(PostAnotacaoDTO postAnotacaoDTO, string caminhoFisico, string caminhoAbsoluto, string splitRelativo)
+        public async Task<ViewAnotacaoDto> PostAsync(PostAnotacaoDto postAnotacaoDTO, string caminhoFisico, string caminhoAbsoluto, string splitRelativo)
         {
             Anotacao objeto = mapper.Map<Anotacao>(postAnotacaoDTO);
 
@@ -42,10 +42,10 @@ namespace DevLabs.Application.Applications
             UploadFormMethods<Anotacao> uploadClass = new();
             await uploadClass.UploadImage(objeto);
 
-            return mapper.Map<ViewAnotacaoDTO>(await serviceAnotacao.PostAsync(objeto));
+            return mapper.Map<ViewAnotacaoDto>(await serviceAnotacao.PostAsync(objeto));
         }
 
-        public async Task<ViewAnotacaoDTO> PutAsync(PutAnotacaoDTO putAnotacaoDTO, string caminhoFisico, string caminhoAbsoluto, string splitRelativo)
+        public async Task<ViewAnotacaoDto> PutAsync(PutAnotacaoDto putAnotacaoDTO, string caminhoFisico, string caminhoAbsoluto, string splitRelativo)
         {
             Anotacao objeto = mapper.Map<Anotacao>(putAnotacaoDTO);
             Anotacao consulta = await serviceAnotacao.GetByIdAsync(putAnotacaoDTO.Id);
@@ -69,10 +69,10 @@ namespace DevLabs.Application.Applications
                 objeto.PutInformations(consulta);
             }
 
-            return mapper.Map<ViewAnotacaoDTO>(await serviceAnotacao.PutAsync(objeto));
+            return mapper.Map<ViewAnotacaoDto>(await serviceAnotacao.PutAsync(objeto));
         }
 
-        public override async Task<ViewAnotacaoDTO> DeleteAsync(Guid id)
+        public override async Task<ViewAnotacaoDto> DeleteAsync(Guid id)
         {
             Anotacao consulta = await serviceAnotacao.GetByIdAsync(id);
 
@@ -89,14 +89,14 @@ namespace DevLabs.Application.Applications
             return serviceAnotacao.ValidateIdAnotacaoPut(id);
         }
 
-        public bool ValidateNamePost(PostAnotacaoDTO dto)
+        public bool ValidateNamePost(PostAnotacaoDto dto)
         {
             Anotacao obj = mapper.Map<Anotacao>(dto);
             bool query = serviceAnotacao.ValidateNamePost(obj);
             return mapper.Map<bool>(query);
         }
 
-        public bool ValidateNamePut(PutAnotacaoDTO dto)
+        public bool ValidateNamePut(PutAnotacaoDto dto)
         {
             Anotacao obj = mapper.Map<Anotacao>(dto);
             bool query = serviceAnotacao.ValidateNamePut(obj);

@@ -4,7 +4,7 @@ using FluentValidation;
 
 namespace DevLabs.Application.Validations.Anotacao
 {
-    public class PostAnotacaoValidator : AbstractValidator<PostAnotacaoDTO>
+    public class PostAnotacaoValidator : AbstractValidator<PostAnotacaoDto>
     {
         private readonly IApplicationAnotacao applicationAnotacao;
 
@@ -59,7 +59,7 @@ namespace DevLabs.Application.Validations.Anotacao
             });
         }
 
-        private bool ValidateNamePost(PostAnotacaoDTO dto)
+        private bool ValidateNamePost(PostAnotacaoDto dto)
         {
             return applicationAnotacao.ValidateNamePost(dto);
         }

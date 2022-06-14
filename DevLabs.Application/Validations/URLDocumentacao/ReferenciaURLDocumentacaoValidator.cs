@@ -5,11 +5,11 @@ using System;
 
 namespace DevLabs.Application.Validations.URLDocumentacao
 {
-    public class ReferenciaURLDocumentacaoValidator : AbstractValidator<PutURLDocumentacaoDTO>
+    public class ReferenciaUrlDocumentacaoValidator : AbstractValidator<PutUrlDocumentacaoDto>
     {
         private readonly IApplicationProjeto applicationProjeto;
 
-        public ReferenciaURLDocumentacaoValidator(IApplicationProjeto applicationProjeto)
+        public ReferenciaUrlDocumentacaoValidator(IApplicationProjeto applicationProjeto)
         {
             this.applicationProjeto = applicationProjeto;
 

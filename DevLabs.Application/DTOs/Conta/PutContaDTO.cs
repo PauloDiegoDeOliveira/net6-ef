@@ -2,7 +2,7 @@
 
 namespace DevLabs.Application.DTOs.Conta
 {
-    public class PutContaDTO : PostContaDTO
+    public class PutContaDto : PostContaDto
     {
         public Guid Id { get; set; }
     }

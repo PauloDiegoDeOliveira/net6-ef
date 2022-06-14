@@ -5,7 +5,7 @@ using System;
 
 namespace DevLabs.Application.Validations.Conta
 {
-    public class ReferenciaContaValidator : AbstractValidator<PutContaDTO>
+    public class ReferenciaContaValidator : AbstractValidator<PutContaDto>
     {
         private readonly IApplicationProjeto applicationProjeto;
 

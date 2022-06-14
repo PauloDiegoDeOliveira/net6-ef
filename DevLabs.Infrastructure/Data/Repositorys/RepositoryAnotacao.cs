@@ -19,15 +19,15 @@ namespace DevLabs.Infrastructure.Data.Repositorys
             this.appDbContext = appDbContext;
         }
 
-        public async Task<PagedList<Anotacao>> GetPaginationAsync(ParametersPalavraChave parameters)
+        public async Task<PagedList<Anotacao>> GetPaginationAsync(ParametersPalavraChave parametersPalavraChave)
         {
             return await Task.FromResult(PagedList<Anotacao>
             .ToPagedList(appDbContext.Set<Anotacao>()
-            .Where(x => parameters.Status == 0 || x.Status == (int)parameters.Status)
-            .Where(x => EF.Functions.Like(x.Titulo, $"%{parameters.PalavraChave}%"))
-            .Where(x => (parameters.Id == null) || parameters.Id.Contains(x.Id))
+            .Where(x => parametersPalavraChave.Status == 0 || x.Status == (int)parametersPalavraChave.Status)
+            .Where(x => EF.Functions.Like(x.Titulo, $"%{parametersPalavraChave.PalavraChave}%"))
+            .Where(x => (parametersPalavraChave.Id == null) || parametersPalavraChave.Id.Contains(x.Id))
             .AsNoTracking(),
-             parameters.NumeroPagina, parameters.ResultadosExibidos));
+             parametersPalavraChave.NumeroPagina, parametersPalavraChave.ResultadosExibidos));
         }
 
         public bool ValidateIdAnotacaoPut(Guid id)

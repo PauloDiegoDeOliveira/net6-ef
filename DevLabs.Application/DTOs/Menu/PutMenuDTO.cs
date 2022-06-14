@@ -2,7 +2,7 @@
 
 namespace DevLabs.Application.DTOs.Menu
 {
-    public class PutMenuDTO : PostMenuDTO
+    public class PutMenuDto : PostMenuDto
     {
         public Guid Id { get; set; }
     }

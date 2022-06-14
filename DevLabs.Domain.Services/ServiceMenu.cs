@@ -17,9 +17,9 @@ namespace DevLabs.Domain.Services
             this.repositoryMenu = repositoryMenu;
         }
 
-        public async Task<PagedList<Menu>> GetPaginationAsync(ParametersPalavraChave parameters)
+        public async Task<PagedList<Menu>> GetPaginationAsync(ParametersPalavraChave parametersPalavraChave)
         {
-            return await repositoryMenu.GetPaginationAsync(parameters);
+            return await repositoryMenu.GetPaginationAsync(parametersPalavraChave);
         }
 
         public bool ValidateIdMenuPut(Guid id)

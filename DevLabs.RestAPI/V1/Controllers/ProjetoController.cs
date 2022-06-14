@@ -39,7 +39,7 @@ namespace DevLabs.RestAPI.V1.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAllAsync([FromQuery] ParametersPalavraChave parameters)
         {
-            ViewPagedListDTO<Projeto, ViewProjetoPadraoDTO> result = await applicationProjeto.GetPaginationAsync(parameters);
+            ViewPagedListDto<Projeto, ViewProjetoPadraoDto> result = await applicationProjeto.GetPaginationAsync(parameters);
             if (result.Pagina.Count is 0)
             {
                 NotificarErro("Nenhum projeto foi encontrado.");
@@ -56,7 +56,7 @@ namespace DevLabs.RestAPI.V1.Controllers
         /// <param name="diretorios"></param>
         /// <returns></returns>
         [HttpPost]
-        public async Task<IActionResult> PostAsync([FromBody] PostProjetoDTO postProjetoDTO, Diretorios diretorios)
+        public async Task<IActionResult> PostAsync([FromBody] PostProjetoDto postProjetoDTO, Diretorios diretorios)
         {
             if (!ModelState.IsValid) return CustomResponseFail(ModelState);
 
@@ -77,7 +77,7 @@ namespace DevLabs.RestAPI.V1.Controllers
                 return CustomResponseFail(ModelState);
             }
 
-            ViewProjetoIncludeDTO inserido = await applicationProjeto.PostAsync(postProjetoDTO, Urls["IP"], Urls["DNS"], Urls["SPLIT"], B64String, extensao);
+            ViewProjetoIncludeDto inserido = await applicationProjeto.PostAsync(postProjetoDTO, Urls["IP"], Urls["DNS"], Urls["SPLIT"], B64String, extensao);
 
             return CustomResponseSuccess(inserido, "Projeto criado com sucesso!");
         }
@@ -89,7 +89,7 @@ namespace DevLabs.RestAPI.V1.Controllers
         /// <param name="diretorios"></param>
         /// <returns></returns>
         [HttpPut]
-        public async Task<IActionResult> PutAsync([FromBody] PutProjetoDTO putProjetoDTO, Diretorios diretorios)
+        public async Task<IActionResult> PutAsync([FromBody] PutProjetoDto putProjetoDTO, Diretorios diretorios)
         {
             if (!ModelState.IsValid) return CustomResponseFail(ModelState);
 
@@ -112,7 +112,7 @@ namespace DevLabs.RestAPI.V1.Controllers
                     return CustomResponseFail(ModelState);
                 }
 
-                ViewProjetoIncludeDTO atualizado = await applicationProjeto.PutAsync(putProjetoDTO, Urls["IP"], Urls["DNS"], Urls["SPLIT"], B64String, extensao);
+                ViewProjetoIncludeDto atualizado = await applicationProjeto.PutAsync(putProjetoDTO, Urls["IP"], Urls["DNS"], Urls["SPLIT"], B64String, extensao);
                 if (atualizado is null)
                 {
                     NotificarErro("Nenhum projeto foi encontrado com o id informado.");
@@ -123,7 +123,7 @@ namespace DevLabs.RestAPI.V1.Controllers
             }
             else
             {
-                ViewProjetoIncludeDTO atualizado = await applicationProjeto.PutAsync(putProjetoDTO, "", "", "", "", "");
+                ViewProjetoIncludeDto atualizado = await applicationProjeto.PutAsync(putProjetoDTO, "", "", "", "", "");
                 if (atualizado is null)
                 {
                     NotificarErro("Nenhum projeto foi encontrado com o id informado.");
@@ -142,7 +142,7 @@ namespace DevLabs.RestAPI.V1.Controllers
         [HttpDelete("{id:guid}")]
         public async Task<IActionResult> DeleteAsync(Guid id)
         {
-            ViewProjetoIncludeDTO result = await applicationProjeto.PutStatusAsync(id, Status.Excluido);
+            ViewProjetoIncludeDto result = await applicationProjeto.PutStatusAsync(id, Status.Excluido);
             if (result is null)
             {
                 NotificarErro("Nenhum projeto foi encontrado com o id informado.");
@@ -167,7 +167,7 @@ namespace DevLabs.RestAPI.V1.Controllers
                 return CustomResponseFail(ModelState);
             }
 
-            ViewProjetoIncludeDTO result = await applicationProjeto.PutStatusAsync(id, status);
+            ViewProjetoIncludeDto result = await applicationProjeto.PutStatusAsync(id, status);
             if (result is null)
             {
                 NotificarErro("Nenhum projeto foi encontrado com o id informado.");
@@ -189,10 +189,10 @@ namespace DevLabs.RestAPI.V1.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet("detalhes/{id:guid}")]
-        [ProducesResponseType(typeof(ViewProjetoIncludeDTO), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ViewProjetoIncludeDto), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetByIdDetailsAsync(Guid id)
         {
-            ViewProjetoIncludeDTO result = await applicationProjeto.GetByIdDetailsAsync(id);
+            ViewProjetoIncludeDto result = await applicationProjeto.GetByIdDetailsAsync(id);
             if (result is null)
             {
                 NotificarErro("Nenhum projeto foi encontrado com o id informado.");

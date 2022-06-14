@@ -2,7 +2,7 @@
 
 namespace DevLabs.Application.DTOs.URLDocumentacao
 {
-    public class PutURLDocumentacaoDTO : PostURLDocumentacaoDTO
+    public class PutUrlDocumentacaoDto : PostUrlDocumentacaoDto
     {
         public Guid Id { get; set; }
     }

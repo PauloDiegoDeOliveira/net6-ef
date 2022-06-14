@@ -2,7 +2,7 @@
 
 namespace DevLabs.Application.DTOs.URLProducao
 {
-    public class PutURLProducaoDTO : PostURLProducaoDTO
+    public class PutUrlProducaoDto : PostUrlProducaoDto
     {
         public Guid Id { get; set; }
     }

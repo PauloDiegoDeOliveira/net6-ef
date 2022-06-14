@@ -5,11 +5,11 @@ using System;
 
 namespace DevLabs.Application.Validations.URLHomologacao
 {
-    public class ReferenciaURLHomologacaoValidator : AbstractValidator<PutURLHomologacaoDTO>
+    public class ReferenciaUrlHomologacaoValidator : AbstractValidator<PutUrlHomologacaoDto>
     {
         private readonly IApplicationProjeto applicationProjeto;
 
-        public ReferenciaURLHomologacaoValidator(IApplicationProjeto applicationProjeto)
+        public ReferenciaUrlHomologacaoValidator(IApplicationProjeto applicationProjeto)
         {
             this.applicationProjeto = applicationProjeto;
 

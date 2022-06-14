@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace DevLabs.Infrastructure.Configurations
 {
-    public class ProjetoConfiguration<TEntity> : ConfigurationUploadB64Base<Projeto>
+    public class ProjetoConfiguration : ConfigurationUploadB64Base<Projeto>
     {
         public override void Configure(EntityTypeBuilder<Projeto> builder)
         {

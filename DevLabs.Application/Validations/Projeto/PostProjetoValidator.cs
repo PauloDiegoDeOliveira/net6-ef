@@ -4,7 +4,7 @@ using FluentValidation;
 
 namespace DevLabs.Application.Validations.Projeto
 {
-    public class PostProjetoValidator : AbstractValidator<PostProjetoDTO>
+    public class PostProjetoValidator : AbstractValidator<PostProjetoDto>
     {
         private readonly IApplicationProjeto applicationProjeto;
 
@@ -57,7 +57,7 @@ namespace DevLabs.Application.Validations.Projeto
                 .WithMessage("O status do projeto não pode ser vazio.");
         }
 
-        private bool ValidateNamePost(PostProjetoDTO dto)
+        private bool ValidateNamePost(PostProjetoDto dto)
         {
             return applicationProjeto.ValidateNamePost(dto);
         }

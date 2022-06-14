@@ -2,7 +2,7 @@
 
 namespace DevLabs.Application.DTOs.URLHomologacao
 {
-    public class PutURLHomologacaoDTO : PostURLHomologacaoDTO
+    public class PutUrlHomologacaoDto : PostUrlHomologacaoDto
     {
         public Guid Id { get; set; }
     }

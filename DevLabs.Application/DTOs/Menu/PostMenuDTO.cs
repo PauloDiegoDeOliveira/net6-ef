@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Http;
 
 namespace DevLabs.Application.DTOs.Menu
 {
-    public class PostMenuDTO
+    public class PostMenuDto
     {
         public IFormFile ImagemUpload { get; set; }
 

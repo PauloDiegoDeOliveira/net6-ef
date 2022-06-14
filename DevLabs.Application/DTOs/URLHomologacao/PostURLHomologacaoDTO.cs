@@ -2,7 +2,7 @@
 
 namespace DevLabs.Application.DTOs.URLHomologacao
 {
-    public class PostURLHomologacaoDTO
+    public class PostUrlHomologacaoDto
     {
         public string URL { get; set; }
 

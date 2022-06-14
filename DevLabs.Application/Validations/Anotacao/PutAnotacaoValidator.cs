@@ -5,7 +5,7 @@ using System;
 
 namespace DevLabs.Application.Validations.Anotacao
 {
-    public class PutAnotacaoValidator : AbstractValidator<PutAnotacaoDTO>
+    public class PutAnotacaoValidator : AbstractValidator<PutAnotacaoDto>
     {
         private readonly IApplicationAnotacao applicationAnotacao;
 
@@ -77,7 +77,7 @@ namespace DevLabs.Application.Validations.Anotacao
             return applicationAnotacao.ValidateIdAnotacaoPut(id);
         }
 
-        private bool ValidateNamePut(PutAnotacaoDTO dto)
+        private bool ValidateNamePut(PutAnotacaoDto dto)
         {
             return applicationAnotacao.ValidateNamePut(dto);
         }

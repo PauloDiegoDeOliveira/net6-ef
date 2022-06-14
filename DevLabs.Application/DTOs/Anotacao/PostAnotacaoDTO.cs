@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Http;
 
 namespace DevLabs.Application.DTOs.Anotacao
 {
-    public class PostAnotacaoDTO
+    public class PostAnotacaoDto
     {
         public IFormFile ImagemUpload { get; set; }
 

@@ -43,6 +43,12 @@ namespace DevLabs.RestAPI.Controllers
             });
         }
 
+        protected ActionResult CustomResponseFail(ModelStateDictionary modelState)
+        {
+            if (!modelState.IsValid) NotificarErroModelInvalida(modelState);
+            return CustomResponseFail();
+        }
+
         protected ActionResult CustomResponseSuccess(object result = null, string mensagem = "")
         {
             return Ok(new
@@ -51,12 +57,6 @@ namespace DevLabs.RestAPI.Controllers
                 sucesso = true,
                 dados = result
             });
-        }
-
-        protected ActionResult CustomResponseFail(ModelStateDictionary modelState)
-        {
-            if (!modelState.IsValid) NotificarErroModelInvalida(modelState);
-            return CustomResponseFail();
         }
 
         protected void NotificarErroModelInvalida(ModelStateDictionary modelState)

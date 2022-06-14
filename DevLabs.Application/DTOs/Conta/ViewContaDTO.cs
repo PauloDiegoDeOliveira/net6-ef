@@ -3,7 +3,7 @@ using System;
 
 namespace DevLabs.Application.DTOs.Conta
 {
-    public class ViewContaDTO
+    public class ViewContaDto
     {
         public Guid Id { get; set; }
 

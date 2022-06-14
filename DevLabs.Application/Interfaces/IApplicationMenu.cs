@@ -8,18 +8,18 @@ using System.Threading.Tasks;
 
 namespace DevLabs.Application.Interfaces
 {
-    public interface IApplicationMenu : IApplicationBase<Menu, ViewMenuDTO, PostMenuDTO, PutMenuDTO>
+    public interface IApplicationMenu : IApplicationBase<Menu, ViewMenuDto, PostMenuDto, PutMenuDto>
     {
-        Task<ViewPagedListDTO<Menu, ViewMenuDTO>> GetPaginationAsync(ParametersPalavraChave parametersPalavraChave);
+        Task<ViewPagedListDto<Menu, ViewMenuDto>> GetPaginationAsync(ParametersPalavraChave parametersPalavraChave);
 
-        Task<ViewMenuDTO> PostAsync(PostMenuDTO postMenuDTO, string caminhoFisico, string caminhoAbsoluto, string splitRelativo);
+        Task<ViewMenuDto> PostAsync(PostMenuDto postMenuDTO, string caminhoFisico, string caminhoAbsoluto, string splitRelativo);
 
-        Task<ViewMenuDTO> PutAsync(PutMenuDTO putMenuDTO, string caminhoFisico, string caminhoAbsoluto, string splitRelativo);
+        Task<ViewMenuDto> PutAsync(PutMenuDto putMenuDTO, string caminhoFisico, string caminhoAbsoluto, string splitRelativo);
 
         bool ValidateIdMenuPut(Guid id);
 
-        bool ValidateNamePost(PostMenuDTO dto);
+        bool ValidateNamePost(PostMenuDto dto);
 
-        bool ValidateNamePut(PutMenuDTO dto);
+        bool ValidateNamePut(PutMenuDto dto);
     }
 }

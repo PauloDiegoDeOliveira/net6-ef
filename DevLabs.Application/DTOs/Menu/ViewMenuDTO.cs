@@ -3,7 +3,7 @@ using System;
 
 namespace DevLabs.Application.DTOs.Menu
 {
-    public class ViewMenuDTO
+    public class ViewMenuDto
     {
         public Guid Id { get; set; }
 

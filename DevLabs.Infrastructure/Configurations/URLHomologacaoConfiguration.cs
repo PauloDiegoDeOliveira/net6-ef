@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace DevLabs.Infrastructure.Configurations
 {
-    public class URLHomologacaoConfiguration : ConfigurationBase<URLHomologacao>
+    public class UrlHomologacaoConfiguration : ConfigurationBase<URLHomologacao>
     {
         public override void Configure(EntityTypeBuilder<URLHomologacao> builder)
         {

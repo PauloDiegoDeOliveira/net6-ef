@@ -3,7 +3,7 @@ using System;
 
 namespace DevLabs.Application.DTOs.URLHomologacao
 {
-    public class ViewURLHomologacaoDTO
+    public class ViewUrlHomologacaoDto
     {
         public Guid Id { get; set; }
 

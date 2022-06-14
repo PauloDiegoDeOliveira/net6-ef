@@ -8,7 +8,7 @@ using System.Collections.Generic;
 
 namespace DevLabs.Application.DTOs.Projeto
 {
-    public class ViewProjetoIncludeDTO
+    public class ViewProjetoIncludeDto
     {
         public Guid Id { get; set; }
 
@@ -40,12 +40,12 @@ namespace DevLabs.Application.DTOs.Projeto
 
         public Status Status { get; set; }
 
-        public List<ViewURLHomologacaoDTO> URLSHomologacao { get; set; }
+        public List<ViewUrlHomologacaoDto> URLSHomologacao { get; set; }
 
-        public List<ViewURLProducaoDTO> URLSProducao { get; set; }
+        public List<ViewUrlProducaoDto> URLSProducao { get; set; }
 
-        public List<ViewURLDocumentacaoDTO> URLSDocumentacao { get; set; }
+        public List<ViewUrlDocumentacaoDto> URLSDocumentacao { get; set; }
 
-        public List<ViewContaDTO> Contas { get; set; }
+        public List<ViewContaDto> Contas { get; set; }
     }
 }

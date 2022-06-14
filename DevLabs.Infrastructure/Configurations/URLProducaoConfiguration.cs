@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace DevLabs.Infrastructure.Configurations
 {
-    public class URLProducaoConfiguration : ConfigurationBase<URLProducao>
+    public class UrlProducaoConfiguration : ConfigurationBase<URLProducao>
     {
         public override void Configure(EntityTypeBuilder<URLProducao> builder)
         {

@@ -2,7 +2,7 @@
 
 namespace DevLabs.Application.DTOs.URLDocumentacao
 {
-    public class PostURLDocumentacaoDTO
+    public class PostUrlDocumentacaoDto
     {
         public string URL { get; set; }
 

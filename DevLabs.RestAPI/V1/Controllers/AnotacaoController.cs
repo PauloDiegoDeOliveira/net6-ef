@@ -40,7 +40,7 @@ namespace DevLabs.RestAPI.V1.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAllAsync([FromQuery] ParametersPalavraChave parameters)
         {
-            ViewPagedListDTO<Anotacao, ViewAnotacaoDTO> result = await aplicationAnotacao.GetPaginationAsync(parameters);
+            ViewPagedListDto<Anotacao, ViewAnotacaoDto> result = await aplicationAnotacao.GetPaginationAsync(parameters);
             if (result.Pagina.Count is 0)
             {
                 NotificarErro("Nenhuma anotação foi encontrada.");
@@ -57,7 +57,7 @@ namespace DevLabs.RestAPI.V1.Controllers
         /// <param name="diretorios"></param>
         /// <returns></returns>
         [HttpPost]
-        public async Task<IActionResult> PostAsync([FromForm] PostAnotacaoDTO postAnotacaoDTO, Diretorios diretorios)
+        public async Task<IActionResult> PostAsync([FromForm] PostAnotacaoDto postAnotacaoDTO, Diretorios diretorios)
         {
             if (!ModelState.IsValid) return CustomResponseFail(ModelState);
 
@@ -69,7 +69,7 @@ namespace DevLabs.RestAPI.V1.Controllers
 
             Dictionary<string, string> Urls = await PathSystem.GetURLs(diretorios.ToString(), actualEnvironment);
 
-            ViewAnotacaoDTO inserido = await aplicationAnotacao.PostAsync(postAnotacaoDTO, Urls["IP"], Urls["DNS"], Urls["SPLIT"]);
+            ViewAnotacaoDto inserido = await aplicationAnotacao.PostAsync(postAnotacaoDTO, Urls["IP"], Urls["DNS"], Urls["SPLIT"]);
 
             return CustomResponseSuccess(inserido, "Anotação criado com sucesso!");
         }
@@ -81,7 +81,7 @@ namespace DevLabs.RestAPI.V1.Controllers
         /// <param name="diretorios"></param>
         /// <returns></returns>
         [HttpPut]
-        public async Task<IActionResult> PutAsync([FromForm] PutAnotacaoDTO putAnotacaoDTO, Diretorios diretorios)
+        public async Task<IActionResult> PutAsync([FromForm] PutAnotacaoDto putAnotacaoDTO, Diretorios diretorios)
         {
             if (!ModelState.IsValid) return CustomResponseFail(ModelState);
 
@@ -95,7 +95,7 @@ namespace DevLabs.RestAPI.V1.Controllers
 
                 Dictionary<string, string> Urls = await PathSystem.GetURLs(diretorios.ToString(), actualEnvironment);
 
-                ViewAnotacaoDTO atualizado = await aplicationAnotacao.PutAsync(putAnotacaoDTO, Urls["IP"], Urls["DNS"], Urls["SPLIT"]);
+                ViewAnotacaoDto atualizado = await aplicationAnotacao.PutAsync(putAnotacaoDTO, Urls["IP"], Urls["DNS"], Urls["SPLIT"]);
                 if (atualizado is null)
                 {
                     NotificarErro("Nenhuma anotação foi encontrada com o id informado.");
@@ -106,7 +106,7 @@ namespace DevLabs.RestAPI.V1.Controllers
             }
             else
             {
-                ViewAnotacaoDTO atualizado = await aplicationAnotacao.PutAsync(putAnotacaoDTO, "", "", "");
+                ViewAnotacaoDto atualizado = await aplicationAnotacao.PutAsync(putAnotacaoDTO, "", "", "");
                 if (atualizado is null)
                 {
                     NotificarErro("Nenhuma anotação foi encontrada com o id informado.");
@@ -125,7 +125,7 @@ namespace DevLabs.RestAPI.V1.Controllers
         [HttpDelete("{id:guid}")]
         public async Task<IActionResult> DeleteAsync(Guid id)
         {
-            ViewAnotacaoDTO result = await aplicationAnotacao.PutStatusAsync(id, Status.Excluido);
+            ViewAnotacaoDto result = await aplicationAnotacao.PutStatusAsync(id, Status.Excluido);
             if (result is null)
             {
                 NotificarErro("Nenhuma anotação foi encontrada com o id informado.");
@@ -142,7 +142,7 @@ namespace DevLabs.RestAPI.V1.Controllers
         /// <param name="patch"></param>
         /// <remarks>Modelo: [ { "op": "replace", "path": "/titulo", "value": "Teste path 1" } ]</remarks>
         [HttpPatch("{id:guid}")]
-        public async Task<ActionResult> PatchAsync(Guid id, [FromBody] JsonPatchDocument<PutAnotacaoDTO> patch)
+        public async Task<ActionResult> PatchAsync(Guid id, [FromBody] JsonPatchDocument<PutAnotacaoDto> patch)
         {
             if (patch is null)
             {
@@ -150,8 +150,8 @@ namespace DevLabs.RestAPI.V1.Controllers
                 return CustomResponseFail(ModelState);
             }
 
-            EntityToDto<Anotacao, PutAnotacaoDTO> objetoPermissao = await aplicationAnotacao.MapStructById(id);
-            if (objetoPermissao.Equals(default(EntityToDto<Anotacao, PutAnotacaoDTO>)))
+            EntityToDto<Anotacao, PutAnotacaoDto> objetoPermissao = await aplicationAnotacao.MapStructById(id);
+            if (objetoPermissao.Equals(default(EntityToDto<Anotacao, PutAnotacaoDto>)))
             {
                 NotificarErro("Nenhuma anotação foi encontrada com o id informado.");
                 return CustomResponseFail(ModelState);
@@ -186,7 +186,7 @@ namespace DevLabs.RestAPI.V1.Controllers
                 return CustomResponseFail(ModelState);
             }
 
-            ViewAnotacaoDTO result = await aplicationAnotacao.PutStatusAsync(id, status);
+            ViewAnotacaoDto result = await aplicationAnotacao.PutStatusAsync(id, status);
             if (result is null)
             {
                 NotificarErro("Nenhuma anotação foi encontrada com o id informado.");

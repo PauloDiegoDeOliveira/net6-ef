@@ -40,7 +40,7 @@ var provider = app.Services.GetRequiredService<IApiVersionDescriptionProvider>()
 
 if (app.Environment.IsDevelopment())
 {
-    app.UseCors("Development");    
+    app.UseCors("Development");
 }
 else if (app.Environment.IsProduction())
 {

@@ -3,7 +3,7 @@ using System;
 
 namespace DevLabs.Application.DTOs.URLDocumentacao
 {
-    public class ViewURLDocumentacaoDTO
+    public class ViewUrlDocumentacaoDto
     {
         public Guid Id { get; set; }
 

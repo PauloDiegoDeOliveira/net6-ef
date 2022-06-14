@@ -8,7 +8,7 @@ using System.Collections.Generic;
 
 namespace DevLabs.Application.DTOs.Projeto
 {
-    public class PutProjetoDTO
+    public class PutProjetoDto
     {
         public string ImagemBase64 { get; set; }
 
@@ -38,12 +38,12 @@ namespace DevLabs.Application.DTOs.Projeto
 
         public Status Status { get; set; }
 
-        public List<PutURLHomologacaoDTO> URLSHomologacao { get; set; }
+        public List<PutUrlHomologacaoDto> URLSHomologacao { get; set; }
 
-        public List<PutURLProducaoDTO> URLSProducao { get; set; }
+        public List<PutUrlProducaoDto> URLSProducao { get; set; }
 
-        public List<PutURLDocumentacaoDTO> URLSDocumentacao { get; set; }
+        public List<PutUrlDocumentacaoDto> URLSDocumentacao { get; set; }
 
-        public List<PutContaDTO> Contas { get; set; }
+        public List<PutContaDto> Contas { get; set; }
     }
 }
