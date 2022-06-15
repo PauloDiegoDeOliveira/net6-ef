@@ -13,9 +13,9 @@ namespace DevLabs.Infrastructure.Data
         }
 
         public DbSet<Projeto> Projetos { get; set; }
-        public DbSet<URLHomologacao> URLSHomolocacao { get; set; }
-        public DbSet<URLProducao> URLSProducao { get; set; }
-        public DbSet<URLDocumentacao> URLSDocumentacao { get; set; }
+        public DbSet<UrlHomologacao> URLSHomolocacao { get; set; }
+        public DbSet<UrlProducao> URLSProducao { get; set; }
+        public DbSet<UrlDocumentacao> URLSDocumentacao { get; set; }
         public DbSet<Conta> Contas { get; set; }
         public DbSet<Anotacao> Anotacoes { get; set; }
         public DbSet<Menu> Menus { get; set; }

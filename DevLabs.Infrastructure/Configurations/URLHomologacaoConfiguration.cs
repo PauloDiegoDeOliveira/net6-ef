@@ -5,9 +5,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace DevLabs.Infrastructure.Configurations
 {
-    public class UrlHomologacaoConfiguration : ConfigurationBase<URLHomologacao>
+    public class UrlHomologacaoConfiguration : ConfigurationBase<UrlHomologacao>
     {
-        public override void Configure(EntityTypeBuilder<URLHomologacao> builder)
+        public override void Configure(EntityTypeBuilder<UrlHomologacao> builder)
         {
             tableName = "URLSHomologacao";
 

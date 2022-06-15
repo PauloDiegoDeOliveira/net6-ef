@@ -28,11 +28,11 @@ namespace DevLabs.Domain.Entitys
 
         public int Instituto { get; set; }
 
-        public List<URLHomologacao> URLSHomologacao { get; private set; }
+        public List<UrlHomologacao> URLSHomologacao { get; private set; }
 
-        public List<URLProducao> URLSProducao { get; private set; }
+        public List<UrlProducao> URLSProducao { get; private set; }
 
-        public List<URLDocumentacao> URLSDocumentacao { get; private set; }
+        public List<UrlDocumentacao> URLSDocumentacao { get; private set; }
 
         public List<Conta> Contas { get; private set; }
 

@@ -1,8 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
 	<PropertyGroup>
-		<TargetFramework>net6.0</TargetFramework>
-                <ProjectGuid>202ABA34-14AD-4052-8875-08DA4C7BC5D3</ProjectGuid>		
+		<TargetFramework>net6.0</TargetFramework>	
+             <ProjectGuid>202ABA34-14AD-4052-8875-08DA4C7BC5D3</ProjectGuid>				            
 		<ImplicitUsings>enable</ImplicitUsings>
 		<GenerateDocumentationFile>True</GenerateDocumentationFile>
 	</PropertyGroup>

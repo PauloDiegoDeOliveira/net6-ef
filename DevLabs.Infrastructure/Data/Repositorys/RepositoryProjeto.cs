@@ -60,7 +60,7 @@ namespace DevLabs.Infrastructure.Data.Repositorys
         {
             consulta.URLSHomologacao.Clear();
 
-            foreach (URLHomologacao urlHomologacao in projeto.URLSHomologacao)
+            foreach (UrlHomologacao urlHomologacao in projeto.URLSHomologacao)
             {
                 consulta.URLSHomologacao.Add(urlHomologacao);
             }
@@ -72,7 +72,7 @@ namespace DevLabs.Infrastructure.Data.Repositorys
         {
             consulta.URLSProducao.Clear();
 
-            foreach (URLProducao urlProducao in projeto.URLSProducao)
+            foreach (UrlProducao urlProducao in projeto.URLSProducao)
             {
                 consulta.URLSProducao.Add(urlProducao);
             }
@@ -84,7 +84,7 @@ namespace DevLabs.Infrastructure.Data.Repositorys
         {
             consulta.URLSDocumentacao.Clear();
 
-            foreach (URLDocumentacao urlDocumentacao in projeto.URLSDocumentacao)
+            foreach (UrlDocumentacao urlDocumentacao in projeto.URLSDocumentacao)
             {
                 consulta.URLSDocumentacao.Add(urlDocumentacao);
             }

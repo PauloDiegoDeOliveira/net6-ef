@@ -3,7 +3,7 @@ using System;
 
 namespace DevLabs.Domain.Entitys
 {
-    public class URLProducao : EntityBase
+    public class UrlProducao : EntityBase
     {
         public Guid ProjetoId { get; private set; }
 
@@ -13,7 +13,7 @@ namespace DevLabs.Domain.Entitys
 
         public Projeto Projeto { get; private set; }
 
-        protected URLProducao()
+        protected UrlProducao()
         { }
     }
 }

@@ -3,7 +3,7 @@ using System;
 
 namespace DevLabs.Domain.Entitys
 {
-    public class URLHomologacao : EntityBase
+    public class UrlHomologacao : EntityBase
     {
         public Guid ProjetoId { get; private set; }
 
@@ -13,7 +13,7 @@ namespace DevLabs.Domain.Entitys
 
         public Projeto Projeto { get; private set; }
 
-        protected URLHomologacao()
+        protected UrlHomologacao()
         { }
     }
 }

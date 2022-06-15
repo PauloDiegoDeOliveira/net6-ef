@@ -19,5 +19,10 @@ namespace DevLabs.Domain.Entitys.Base
         {
             Status = status;
         }
+
+        public void GuidValue(Guid id)
+        {
+            Id = id;
+        }
     }
 }

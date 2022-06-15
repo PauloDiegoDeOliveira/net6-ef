@@ -10,7 +10,7 @@ namespace DevLabs.Domain.Entitys
 
         public string Rota { get; private set; }
 
-        protected Anotacao()
+        public Anotacao()
         { }
     }
 }

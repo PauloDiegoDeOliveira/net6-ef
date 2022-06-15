@@ -22,17 +22,17 @@ namespace DevLabs.Application.Mappers
             CreateMap<Projeto, ViewProjetoIncludeDto>().ReverseMap();
             CreateMap<Projeto, ViewProjetoPadraoDto>().ReverseMap();
 
-            CreateMap<PostUrlHomologacaoDto, URLHomologacao>().ReverseMap();
-            CreateMap<PutUrlHomologacaoDto, URLHomologacao>().ReverseMap();
-            CreateMap<URLHomologacao, ViewUrlHomologacaoDto>().ReverseMap();
+            CreateMap<PostUrlHomologacaoDto, UrlHomologacao>().ReverseMap();
+            CreateMap<PutUrlHomologacaoDto, UrlHomologacao>().ReverseMap();
+            CreateMap<UrlHomologacao, ViewUrlHomologacaoDto>().ReverseMap();
 
-            CreateMap<PostUrlProducaoDto, URLProducao>().ReverseMap();
-            CreateMap<PutUrlProducaoDto, URLProducao>().ReverseMap();
-            CreateMap<URLProducao, ViewUrlProducaoDto>().ReverseMap();
+            CreateMap<PostUrlProducaoDto, UrlProducao>().ReverseMap();
+            CreateMap<PutUrlProducaoDto, UrlProducao>().ReverseMap();
+            CreateMap<UrlProducao, ViewUrlProducaoDto>().ReverseMap();
 
-            CreateMap<PostUrlDocumentacaoDto, URLDocumentacao>().ReverseMap();
-            CreateMap<PutUrlDocumentacaoDto, URLDocumentacao>().ReverseMap();
-            CreateMap<URLDocumentacao, ViewUrlDocumentacaoDto>().ReverseMap();
+            CreateMap<PostUrlDocumentacaoDto, UrlDocumentacao>().ReverseMap();
+            CreateMap<PutUrlDocumentacaoDto, UrlDocumentacao>().ReverseMap();
+            CreateMap<UrlDocumentacao, ViewUrlDocumentacaoDto>().ReverseMap();
 
             CreateMap<PostContaDto, Conta>().ReverseMap();
             CreateMap<PutContaDto, Conta>().ReverseMap();

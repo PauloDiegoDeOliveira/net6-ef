@@ -5,9 +5,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace DevLabs.Infrastructure.Configurations
 {
-    public class UrlDocumentacaoConfiguration : ConfigurationBase<URLDocumentacao>
+    public class UrlDocumentacaoConfiguration : ConfigurationBase<UrlDocumentacao>
     {
-        public override void Configure(EntityTypeBuilder<URLDocumentacao> builder)
+        public override void Configure(EntityTypeBuilder<UrlDocumentacao> builder)
         {
             tableName = "URLSDocumentacao";
 

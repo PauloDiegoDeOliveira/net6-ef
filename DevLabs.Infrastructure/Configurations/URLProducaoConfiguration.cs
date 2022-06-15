@@ -5,9 +5,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace DevLabs.Infrastructure.Configurations
 {
-    public class UrlProducaoConfiguration : ConfigurationBase<URLProducao>
+    public class UrlProducaoConfiguration : ConfigurationBase<UrlProducao>
     {
-        public override void Configure(EntityTypeBuilder<URLProducao> builder)
+        public override void Configure(EntityTypeBuilder<UrlProducao> builder)
         {
             tableName = "URLSProducao";
 
