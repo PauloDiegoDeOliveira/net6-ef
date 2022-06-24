@@ -66,8 +66,8 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-TextSystem.GetTextJson();
+// TextSystem.GetTextJson();
 
-PathSystem.GetUrlJson();
+// PathSystem.GetUrlJson();
 
 app.Run();
