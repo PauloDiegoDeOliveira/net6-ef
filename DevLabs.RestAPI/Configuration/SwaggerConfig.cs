@@ -95,8 +95,8 @@ namespace DevLabs.APIRest.Configuration
                 Description = "Esta API faz parte do projeto DevLabs.",
                 Contact = new OpenApiContact
                 {
-                    Name = "Front-End",
-                    Email = "edd.dev@unip.br",
+                    Name = "Setor",
+                    Email = "email@email.com.br",
                 },
             };
 
